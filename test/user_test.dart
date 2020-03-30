@@ -10,11 +10,11 @@ void main(){
       user.uid="1";
       expect(user.uid,"1");
 
-      user.firstname="Tshepo";
-      expect(user.firstname, "Tshepo");
+      user.firstname="Tshepang";
+      expect(user.firstname, "Tshepang");
 
-      user.lastname="Nkambule";
-      expect(user.lastname, "Nkambule");
+      user.lastname="Motaung";
+      expect(user.lastname, "Motaung");
 
       //TODO carry on in a simlar way skaps and refactor code
 
