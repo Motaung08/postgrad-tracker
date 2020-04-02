@@ -11,13 +11,11 @@ class StudentRegisterPage extends StatefulWidget {
 //  StudentRegisterPage({Key key, this.title}) : super(key: key);
 //  final String title;
   final Function toggleView;
+
   StudentRegisterPage({ this.toggleView });
 
-
-  //final Function toggleView;
- // StudentRegisterPage({this.toggleView});
   @override
-  _StudentRegisterPageState createState() => _StudentRegisterPageState();
+    _StudentRegisterPageState createState() => _StudentRegisterPageState();
 }
 
 class _StudentRegisterPageState extends State<StudentRegisterPage> {
