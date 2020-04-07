@@ -5,10 +5,22 @@ class User {
   String _lastname;
   String _email;
   String _studenNo;
+  String _Upload;
+  String _Capture;
 
   //TODO carry on
   User();
 
+  String get Upload => _Upload;
+  set Upload(String value){
+    _Upload = value;
+  }
+
+  String get Capture => _Capture;
+
+  set Capture(String value){
+    _Capture = value;
+  }
 
   String get uid => _uid;
 

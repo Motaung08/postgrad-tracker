@@ -31,7 +31,6 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<List> _login() async{
 
-
     final response = await http.post("https://witsinnovativeskyline.000webhostapp.com/login.php",body: {
       "Email": _emailController.text,
       "Password": _passwordController.text
@@ -58,7 +57,6 @@ class _LoginPageState extends State<LoginPage> {
     return datauser;
 
   }
-
 
   @override
   Widget build(BuildContext context) {

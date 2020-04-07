@@ -1,8 +1,11 @@
 import 'dart:convert';
+//import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:postgrad_tracker/main.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 
 
 class ViewStudentProfilePage extends StatefulWidget {
@@ -18,7 +21,9 @@ class ViewStudentProfilePage extends StatefulWidget {
   @override
   _ViewStudentProfilePageState createState() => _ViewStudentProfilePageState();
 }
+
 String msg='';
+
 class _ViewStudentProfilePageState extends State<ViewStudentProfilePage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 
@@ -26,6 +31,7 @@ class _ViewStudentProfilePageState extends State<ViewStudentProfilePage> {
     print('let us deduce details...');
     final response = await http.post("https://innovativeskyline.000webhostapp.com/viewStudentProfile.php",body: {
       "Email": Email,
+      "Student number": StudNo,
     });
 
     var datauser= json.decode(response.body);
@@ -50,8 +56,42 @@ class _ViewStudentProfilePageState extends State<ViewStudentProfilePage> {
     print(response.body);
     return datauser;
   }
+//  File imageFile;
 
+  _openGallary(){
 
+  }
+
+  _openCamera(){
+
+  }
+
+  Future<void> _showChoiceDialog(BuildContext context){
+    return showDialog(context: context, builder: (BuildContext context){
+      return AlertDialog(
+        title: Text("Choose"),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: <Widget>[
+              GestureDetector(
+                child: Text("Gallary"),
+                onTap: (){
+                  _openGallary();
+                },
+              ),
+              Padding(padding: EdgeInsets.all(8.0),),
+              GestureDetector(
+                child: Text("Camera"),
+                onTap: (){
+                  _openCamera();
+                },
+              )
+            ],
+          ),
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,49 +100,55 @@ class _ViewStudentProfilePageState extends State<ViewStudentProfilePage> {
 
     final studentProfile = Container(
       //elevation: 5.0,
-      //borderRadius: BorderRadius.circular(30.0),
-
+      //borderRadius: BorderRadius.circular(30.0),b
 
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
 
           children: <Widget>[
-                Text("Profile:  \n",
-                    //textAlign: TextAlign.center,
+//                Text("Profile:  \n",
+//                    //textAlign: TextAlign.center,
+//                    style: style.copyWith(
+//                        color: Color(0xff009999), fontWeight: FontWeight.bold, fontSize: 24)
+//                ),
+                Text("No image Selected"),
+                RaisedButton(onPressed: (){
+                  _showChoiceDialog(context);
+
+                },child: Text("Select Image"),),
+                Padding(padding: EdgeInsets.all(8.0),),
+
+                Text( 
+                    "Name: " + FullName+ "\n",
+                    textAlign: TextAlign.start,
                     style: style.copyWith(
-                        color: Color(0xff009999), fontWeight: FontWeight.bold, fontSize: 24)
+                      color: Color(0xff009999), fontWeight: FontWeight.bold, fontSize: 18)
+                 ),
+
+                Text(
+                    "Student Number: "+StudNo+"\n",
+                    textAlign: TextAlign.start,
+                    style: style.copyWith(
+                        color: Color(0xff009999), fontWeight: FontWeight.bold, fontSize: 18)
                 ),
-
-
-              Text(
-                  "Name: "+FullName+"\n",
-                  //textAlign: TextAlign.center,
-                  style: style.copyWith(
-                      color: Color(0xff009999), fontWeight: FontWeight.bold, fontSize: 18)
-              ),
-              Text(
-                  "Student Number: "+StudNo+"\n",
-                  //textAlign: TextAlign.start,
-                  style: style.copyWith(
-                      color: Color(0xff009999), fontWeight: FontWeight.bold, fontSize: 18)
-              ),
-        Text(
-                  "Email: "+Email+"\n",
-                  textAlign: TextAlign.center,
-                  style: style.copyWith(
-                      color: Color(0xff009999), fontWeight: FontWeight.bold, fontSize: 18)
-              ),
-              Text(
-                  "Degree: "+DegreeType+"\n",
-                  textAlign: TextAlign.start,
-                  style: style.copyWith(
-                      color: Color(0xff009999), fontWeight: FontWeight.bold, fontSize: 18)
-              ),
-              Text(
-                  "Date Registered: "+DateReg.toString()+"\n",
-                  textAlign: TextAlign.start,
-                  style: style.copyWith(
-                      color: Color(0xff009999), fontWeight: FontWeight.bold, fontSize: 18)
-              )
+                Text(
+                    "Email: "+Email+"\n",
+                    textAlign: TextAlign.center,
+                    style: style.copyWith(
+                        color: Color(0xff009999), fontWeight: FontWeight.bold, fontSize: 18)
+                ),
+                Text(
+                    "Degree: "+DegreeType+"\n",
+                    textAlign: TextAlign.start,
+                    style: style.copyWith(
+                        color: Color(0xff009999), fontWeight: FontWeight.bold, fontSize: 18)
+                ),
+                Text(
+                    "Date Registered: "+DateReg.toString()+"\n",
+                    textAlign: TextAlign.start,
+                    style: style.copyWith(
+                        color: Color(0xff009999), fontWeight: FontWeight.bold, fontSize: 18)
+                )
         ]
       )
     );
@@ -110,6 +156,11 @@ class _ViewStudentProfilePageState extends State<ViewStudentProfilePage> {
 
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Profile"),
+        backgroundColor: Color(0xff009999),
+      ),
+
       body: Center(
           child: Row(
             children: <Widget>[

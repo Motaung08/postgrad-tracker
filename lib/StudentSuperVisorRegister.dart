@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:postgrad_tracker/SupervisorRegister.dart';
 import 'StudentRegister.dart';
 
-
 class StudentSupChoicePage extends StatefulWidget {
   StudentSupChoicePage({Key key, this.title}) : super(key: key);
 
@@ -17,20 +16,18 @@ class StudentSupChoicePage extends StatefulWidget {
   // always marked "final".
 
   final String title;
+
 //  final Function toggleView;
 //  StudentRegisterPage({this.toggleView});
   @override
   _StudentSupChoicePageState createState() => _StudentSupChoicePageState();
 }
 
-
 class _StudentSupChoicePageState extends State<StudentSupChoicePage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 
   @override
   Widget build(BuildContext context) {
-
-
     final supervisorButon = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
@@ -39,10 +36,7 @@ class _StudentSupChoicePageState extends State<StudentSupChoicePage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => SupervisorRegisterPage()),
-          );
+          Navigator.pushNamed(context, '/SupervisorRegister');
         },
         child: Text("Supervisor",
             textAlign: TextAlign.center,
@@ -59,7 +53,6 @@ class _StudentSupChoicePageState extends State<StudentSupChoicePage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => StudentRegisterPage()),
@@ -107,65 +100,48 @@ class _StudentSupChoicePageState extends State<StudentSupChoicePage> {
 
     const Alignment topLeft = Alignment(-1.0, -1.0);
 
-
-
     return Scaffold(
-
       body: Center(
-        child: Row(
-          children: <Widget>[
+          child: Row(
+        children: <Widget>[
+          Container(
+            color: Colors.white,
+            width: MediaQuery.of(context).size.width,
+            child: Padding(
+              padding: const EdgeInsets.all(36.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                //mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  //BackButton(),
+                  SizedBox(height: 65.0, width: 500.0, child: supervisorButon),
 
+                  SizedBox(
+                    height: 15.0,
+                    width: 50.0,
+                  ),
+                  SizedBox(height: 45.0, width: 500.0, child: _divider()),
 
-            Container(
-              color: Colors.white,
-
-              width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.all(36.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  //mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    //BackButton(),
-                    SizedBox(
-                        height: 65.0,
-                        width: 500.0,
-                        child: supervisorButon
-                    ),
-
-                    SizedBox(
-                      height: 15.0,
-                      width: 50.0,
-                    ),
-                    SizedBox(
-                        height: 45.0,
-                        width: 500.0,
-                        child: _divider()
-                    ),
-
-                    SizedBox(
-                      height: 15.0,
-                      width: 50.0,
-                    ),
-                    SizedBox(
-                      height: 65.0,
-                      width: 500.0,
-                      child: studentButon,
-                    ),
-                    SizedBox(
-                      height: 15.0,
-                      width: 50.0,
-
-                    ),
-                  ],
-                ),
+                  SizedBox(
+                    height: 15.0,
+                    width: 50.0,
+                  ),
+                  SizedBox(
+                    height: 65.0,
+                    width: 500.0,
+                    child: studentButon,
+                  ),
+                  SizedBox(
+                    height: 15.0,
+                    width: 50.0,
+                  ),
+                ],
               ),
             ),
-          ],
-        )
-
-      ),
+          ),
+        ],
+      )),
     );
   }
 }
