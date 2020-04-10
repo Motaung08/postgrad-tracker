@@ -193,6 +193,7 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
       onChanged: (val){
         setState(() => StudentNo = val);
       },
+      key: Key('studentNumberInput'),
       style: style,
       decoration: InputDecoration(
           //contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -209,6 +210,7 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
       onChanged: (val){
         setState(() => firstName = val);
       },
+      key: Key('studentFirstNameInput'),
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -225,6 +227,7 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
       onChanged: (val){
         setState(() => lastName = val);
       },
+      key: Key('studentLastNameInput'),
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -256,6 +259,7 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
       onChanged: (val){
         setState(() => Degree = val);
       },
+      key: Key('studentDegreeInput'),
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -268,6 +272,7 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
       controller: userTypeController,
       obscureText: false,
       style: style,
+      key: Key('studentTypeInput'),
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Full/Part time",
@@ -282,6 +287,7 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
       onChanged: (val){
         setState(() => DateReg = val);
       },
+      key: Key('studentDateRegisteredInput'),
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -297,6 +303,7 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
       onChanged: (val){
         setState(() => password = val);
       },
+      key: Key('passwordInput'),
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -313,6 +320,7 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
         setState(() => ConfirmPass = val);
 
       },
+      key: Key('confirmPasswordInput'),
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -341,6 +349,7 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
 
 
         },
+        key: Key('registerButtonInput'),
         child: Text("Register",
             textAlign: TextAlign.center,
             style: style.copyWith(
@@ -395,6 +404,7 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
             MaterialPageRoute(builder: (context) => LoginPage()),
           );
         },
+        key: Key('loginButtonInput'),
         child: Text("Login",
             textAlign: TextAlign.center,
             style: style.copyWith(
