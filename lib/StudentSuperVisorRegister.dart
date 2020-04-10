@@ -38,6 +38,7 @@ class _StudentSupChoicePageState extends State<StudentSupChoicePage> {
         onPressed: () {
           Navigator.pushNamed(context, '/SupervisorRegister');
         },
+        key: Key('supervisorButonInput'),
         child: Text("Supervisor",
             textAlign: TextAlign.center,
             style: style.copyWith(
@@ -58,6 +59,7 @@ class _StudentSupChoicePageState extends State<StudentSupChoicePage> {
             MaterialPageRoute(builder: (context) => StudentRegisterPage()),
           );
         },
+        key: Key('studentButonInput'),
         child: Text("Student",
             textAlign: TextAlign.center,
             style: style.copyWith(
