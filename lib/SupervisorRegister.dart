@@ -43,6 +43,7 @@ class _SupervisorRegisterPageState extends State<SupervisorRegisterPage> {
       onChanged: (val){
         setState(() => StaffNo = val);
       },
+      key: Key('staffNumberInput'),
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -57,6 +58,7 @@ class _SupervisorRegisterPageState extends State<SupervisorRegisterPage> {
       onChanged: (val){
         setState(() => firstName = val);
       },
+      key: Key('staffFirstNameInput'),
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -72,6 +74,7 @@ class _SupervisorRegisterPageState extends State<SupervisorRegisterPage> {
       onChanged: (val){
         setState(() => lastName = val);
       },
+      key: Key('staffLastNameInput'),
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Last Name",
@@ -86,6 +89,7 @@ class _SupervisorRegisterPageState extends State<SupervisorRegisterPage> {
       onChanged: (val){
         setState(() => email = val);
       },
+      key: Key('staffEmailInput'),
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Email",
@@ -96,6 +100,7 @@ class _SupervisorRegisterPageState extends State<SupervisorRegisterPage> {
     final staffOfficeField = TextFormField(
       obscureText: false,
       style: style,
+      key: Key("staffOfficeInput"),
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Office",
@@ -108,6 +113,7 @@ class _SupervisorRegisterPageState extends State<SupervisorRegisterPage> {
       onChanged: (val){
         setState(() => password = val);
       },
+      key: Key("passwordInput"),
       obscureText: true,
       style: style,
       decoration: InputDecoration(
@@ -124,6 +130,7 @@ class _SupervisorRegisterPageState extends State<SupervisorRegisterPage> {
       onChanged: (val){
         setState(() => Confirmpassword = val);
       },
+      key: Key('confirmPasswordInput'),
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Confirm Password",
@@ -146,6 +153,7 @@ class _SupervisorRegisterPageState extends State<SupervisorRegisterPage> {
 //            }
 //          }
         },
+        key: Key("registerButonInput"),
         child: Text("Register",
             textAlign: TextAlign.center,
             style: style.copyWith(
@@ -167,6 +175,7 @@ class _SupervisorRegisterPageState extends State<SupervisorRegisterPage> {
             MaterialPageRoute(builder: (context) => LoginPage()),
           );
         },
+        key: Key('loginButonInput'),
         child: Text("Login",
             textAlign: TextAlign.center,
             style: style.copyWith(
