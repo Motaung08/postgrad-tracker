@@ -11,16 +11,16 @@ class User {
   //TODO carry on
   User();
 
-  String get Upload => _Upload;
-  set Upload(String value){
-    _Upload = value;
-  }
-
-  String get Capture => _Capture;
-
-  set Capture(String value){
-    _Capture = value;
-  }
+//  String get Upload => _Upload;
+//  set Upload(String value){
+//    _Upload = value;
+//  }
+//
+//  String get Capture => _Capture;
+//
+//  set Capture(String value){
+//    _Capture = value;
+//  }
 
   String get uid => _uid;
 
