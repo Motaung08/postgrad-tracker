@@ -240,6 +240,7 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
       onChanged: (val){
         setState(() => email = val);
       },
+      key: Key('emailInput'),
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
