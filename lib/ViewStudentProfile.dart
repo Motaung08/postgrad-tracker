@@ -1,6 +1,4 @@
 import 'dart:convert';
-//import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:postgrad_tracker/main.dart';
@@ -101,7 +99,7 @@ class _ViewStudentProfilePageState extends State<ViewStudentProfilePage> {
     final studentProfile = Container(
       //elevation: 5.0,
       //borderRadius: BorderRadius.circular(30.0),b
-
+      key: Key('studentProfileInput'),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
 
@@ -115,7 +113,7 @@ class _ViewStudentProfilePageState extends State<ViewStudentProfilePage> {
                 RaisedButton(onPressed: (){
                   _showChoiceDialog(context);
 
-                },child: Text("Select Image"),),
+                },child: Text("Select Image"), key: Key('SelectImageButtonInput'),),
                 Padding(padding: EdgeInsets.all(8.0),),
 
                 Text( 

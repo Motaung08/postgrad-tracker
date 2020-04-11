@@ -66,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
       obscureText: false,
       validator: (val) => val.isEmpty ? 'Username cannot be blank.' : null,
       style: style,
+      key: Key('emailInput'),
 //      validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -79,6 +80,7 @@ class _LoginPageState extends State<LoginPage> {
       obscureText: true,
       validator: (val) => val.length < 6 ? 'Enter a password 6+ chars long' : null,
       style: style,
+      key: Key('passwordInput'),
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Password",
@@ -100,6 +102,7 @@ class _LoginPageState extends State<LoginPage> {
             textAlign: TextAlign.center,
             style: style.copyWith(
                 color: Colors.white, fontWeight: FontWeight.bold)),
+        key: Key('loginButtonInput'),
       ),
     );
 
@@ -128,6 +131,7 @@ class _LoginPageState extends State<LoginPage> {
             textAlign: TextAlign.center,
             style: style.copyWith(
                 color: Colors.white, fontWeight: FontWeight.bold)),
+        key: Key('RegisterButonInput'),
       ),
     );
 
