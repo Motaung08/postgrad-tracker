@@ -241,6 +241,7 @@ class _MyHomePageState extends State<HomePage> {
               title: Text('My Profile'),
               leading: Icon(Icons.account_box),
             ),
+            key: Key('MyProfileInput'),
           ),
 
           InkWell(
@@ -263,6 +264,7 @@ class _MyHomePageState extends State<HomePage> {
             onTap: (){
               Navigator.popAndPushNamed(context,'/Login');
             },
+            key: Key('SignOutInput'),
             child: ListTile(
               title: Text('Sign out'),
               leading: Icon(Icons.timer_off, color: Colors.green,),
