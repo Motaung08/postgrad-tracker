@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
     final response = await http.post("https://witsinnovativeskyline.000webhostapp.com/login.php",body: {
       "Email": _emailController.text,
       "Password": _passwordController.text
-    });
+    },);
    // print('ugh x2');
     var datauser= json.decode(response.body);
     //print(datauser.length);
@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
             textAlign: TextAlign.center,
             style: style.copyWith(
                 color: Colors.white, fontWeight: FontWeight.bold)),
-        key: Key('loginButtonInput'),
+        key: Key('loginButonInput'),
       ),
     );
 

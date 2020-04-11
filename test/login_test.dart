@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:postgrad_tracker/Login.dart';
+import 'package:postgrad_tracker/user.dart';
+import 'package:postgrad_tracker/StudentSuperVisorRegister.dart';
 
 Widget makeWidgetTestable(Widget widget){
   return MaterialApp(
@@ -19,11 +21,11 @@ void main(){
     final passwordField = find.byKey(Key('passwordInput'));
     expect(passwordField, findsOneWidget);
 
-//    final loginButon= find.byKey(Key('loginButonInput'));
-//    expect(loginButon, findsOneWidget);
-
     final RegisterButon = find.byKey(Key('RegisterButonInput'));
     expect(RegisterButon, findsOneWidget);
+
+    final loginButon = find.byKey(Key('loginButonInput'));
+    expect(loginButon, findsOneWidget);
 
 
   });
