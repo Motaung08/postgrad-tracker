@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
       super.dispose();
     }
 
-    final RegisterButon = Material(
+    final RegisterButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
       color: Color(0xff009999),
@@ -215,7 +215,7 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox (
                         height: 15.0,
                       ),
-                      RegisterButon,
+                      RegisterButton,
                       SizedBox (
                         height: 15.0,
                       ),
