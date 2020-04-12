@@ -1,12 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:postgrad_tracker/Login.dart';
 import 'package:http/http.dart' as http;
-import 'package:postgrad_tracker/user.dart';
-import 'package:postgrad_tracker/StudentSuperVisorRegister.dart';
+
+
 
 Widget makeWidgetTestable(Widget widget){
   return MaterialApp(
@@ -16,6 +14,7 @@ Widget makeWidgetTestable(Widget widget){
 
 
 void main(){
+
   testWidgets('All input feild and button widgets should be on screen', (WidgetTester tester) async{
     await tester.pumpWidget(makeWidgetTestable(LoginPage()));
 
@@ -32,6 +31,9 @@ void main(){
     final loginButon = find.byKey(Key('loginButonInput'));
     expect(loginButon, findsOneWidget);
 
+    Finder hintText = find.byKey(new Key("Password"));
+    expect(hintText.toString().contains(''), true);
 
   });
 }
+
