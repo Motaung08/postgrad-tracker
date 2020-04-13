@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:postgrad_tracker/Login.dart';
 import 'package:http/http.dart' as http;
+import 'package:postgrad_tracker/StudentSuperVisorRegister.dart';
 
 
 
@@ -17,6 +18,7 @@ void main() {
   testWidgets('All input feild and button widgets should be on screen', (
       WidgetTester tester) async {
     await tester.pumpWidget(makeWidgetTestable(LoginPage()));
+    await tester.pumpWidget(makeWidgetTestable(StudentSupChoicePage()));
 
 //    final emailField = find.byKey(Key('emailInput'));
 //

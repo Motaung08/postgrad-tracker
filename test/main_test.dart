@@ -6,7 +6,6 @@ import 'package:postgrad_tracker/Login.dart';
 import 'package:postgrad_tracker/StudentRegister.dart';
 import 'package:postgrad_tracker/StudentSuperVisorRegister.dart';
 import 'package:postgrad_tracker/SupervisorRegister.dart';
-import 'package:postgrad_tracker/ViewSupProfile.dart';
 import 'package:postgrad_tracker/main.dart';
 import 'package:flutter_test/flutter_test.dart';
 
