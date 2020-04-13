@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
@@ -8,6 +9,7 @@ class Post {
   Post.fromJson(this.data);
 }
 
+class MockClient extends Mock implements http.Client {}
 
 Future<Post> fetchPost(http.Client client) async {
   final response =
@@ -22,21 +24,19 @@ Future<Post> fetchPost(http.Client client) async {
   }
 }
 
-class MockClient extends Mock implements http.Client {}
 
 main(){
-  group('fetchPost', () {
-//    test('returns a Post if the http call completes successfully', () async {
-//      final client = MockClient();
-//
-//      // Use Mockito to return a successful response when it calls the
-//      // provided http.Client.
-//      when(client.get('https://witsinnovativeskyline.000webhostapp.com/login.php'))
-//          .thenAnswer((_) async => http.Response('{"title": "Test"}', 200));
-//
-//      // ignore: deprecated_member_use
+  group('Login', () {
+    test('returns a Post if the http call completes successfully', () async {
+      final client = MockClient();
+
+      // Use Mockito to return a successful response when it calls the
+      // provided http.Client.
+      when(client.get('https://witsinnovativeskyline.000webhostapp.com/login.php'))
+          .thenAnswer((_) async => http.Response('{"title": "Test"}', 200));
+
 //      expect(await fetchPost(client), const TypeMatcher<Post>());
-//    });
+    });
 
     test('throws an exception if the http call completes with an error', () {
       final client = MockClient();
