@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:postgrad_tracker/main.dart';
 import 'package:http/http.dart' as http;
-import 'package:image_picker/image_picker.dart';
+//import 'package:image_picker/image_picker.dart';
 
 
 class ViewStudentProfilePage extends StatefulWidget {
@@ -94,6 +94,7 @@ class _ViewStudentProfilePageState extends State<ViewStudentProfilePage> {
   @override
   Widget build(BuildContext context) {
     _viewStudDetails();
+    // ignore: non_constant_identifier_names
     final FullName= FName + " " + LName;
 
     final studentProfile = Container(

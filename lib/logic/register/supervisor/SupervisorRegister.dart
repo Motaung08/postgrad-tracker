@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:postgrad_tracker/Login.dart';
+import 'package:postgrad_tracker/ui/login/Login.dart';
 import 'package:postgrad_tracker/auth.dart';
 
 class SupervisorRegisterPage extends StatefulWidget {
@@ -29,10 +29,13 @@ class _SupervisorRegisterPageState extends State<SupervisorRegisterPage> {
   final _formKey = GlobalKey<FormState>();
   String email='';
   String password='';
+  // ignore: non_constant_identifier_names
   String Confirmpassword ='';
   String firstName='';
   String lastName='';
+  // ignore: non_constant_identifier_names
   String StaffNo='';
+  // ignore: non_constant_identifier_names
   String OfficeNo='';
   String error='';
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:postgrad_tracker/Login.dart';
-import 'package:postgrad_tracker/StudentRegister.dart';
-import 'package:postgrad_tracker/StudentSuperVisorRegister.dart';
+import 'package:postgrad_tracker/ui/login/Login.dart';
+import 'package:postgrad_tracker/logic/register/student/StudentRegister.dart';
+
 
 class Authenticate extends StatefulWidget {
   @override

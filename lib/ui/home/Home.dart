@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:postgrad_tracker/user.dart';
-import 'package:postgrad_tracker/Login.dart';
+import 'package:postgrad_tracker/ui/login/Login.dart';
 
 class HomePage extends StatefulWidget {
   final String email;
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<HomePage> {
 
   addDynamic(String Title) {
 //  setState(() {
-//
+
 //  });
   print("in addDynamic ... and we have $Title");
     listDynamic.add(new DynamicWidget(giventitle: Title));
@@ -142,137 +142,137 @@ class _MyHomePageState extends State<HomePage> {
         ),
       ),
 
-//        drawer: Drawer(
-//          // Add a ListView to the drawer. This ensures the user can scroll
-//          // through the options in the drawer if there isn't enough vertical
-//          // space to fit everything.
-//          child: ListView(
-//
-//            // Important: Remove any padding from the ListView.
-//            padding: EdgeInsets.zero,
-//            children: <Widget>[
-//              DrawerHeader(
-//                child: Text('Menu',
-//                    style: TextStyle(
-//                        color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0)),
-//
-//                decoration: BoxDecoration(
-//                  color: Color(0xff009999),
-//
-//                ),
-//              ),
-//
-//              ListTile(
-//                title: Text(
-//                    'View Profile',
-//                    style: TextStyle(
-//                        color: Color(0xff009999), fontWeight: FontWeight.bold)
-//                ),
-//                onTap: () {
-//                  if(widget.userType==1 || widget.userType==2){
-//                    Navigator.popAndPushNamed(context, '/StudProfile');
-//                  } else if (widget.userType==3){
-//                    Navigator.popAndPushNamed(context, '/SupProfile');
-//                  }else{
-//                    print('User type not recognized');
-//                    Navigator.pop(context);
-//                  }
-//
-//                },
-//              ),
-//              ListTile(
-//                title: Text(
-//                    'Sign Out',
-//                    style: TextStyle(
-//                        color: Color(0xff009999), fontWeight: FontWeight.bold)
-//                ),
-//                onTap: () {
-//                  Navigator.popAndPushNamed(context,'/Login');
-//                },
-//              ),
-//              ListTile(
-//                title: Text('Profile Picture',
-//                style: TextStyle(
-//                  color: Color(0xff009999), fontWeight: FontWeight.bold)
-//                ),
-//                onTap: (){
-//                  Navigator.popAndPushNamed(context, '/ProfilePicture');
-//                },
-//              ),
-//            ],
-//
-//          ),
-//
-//        )
+        drawer: Drawer(
+          // Add a ListView to the drawer. This ensures the user can scroll
+          // through the options in the drawer if there isn't enough vertical
+          // space to fit everything.
+          child: ListView(
 
-    drawer: new Drawer(
-      child: new ListView(
-        children: <Widget>[
-          new UserAccountsDrawerHeader(
-            accountName: Text('Tshepang Motaung'),
-            accountEmail: Text( 'tshepangmotaung97@gmail.com'),
-            currentAccountPicture: GestureDetector(
-//              onTap: ()[
-//                Uploader(context);
-//              ],
-              child: new CircleAvatar(
-                backgroundColor: Colors.grey,
-                child: Icon(Icons.person, color: Colors.white,),
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text('Menu',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0)),
 
+                decoration: BoxDecoration(
+                  color: Color(0xff009999),
+
+                ),
               ),
-            ) ,
-          ),
-          InkWell(
-            onTap: (){
-                  if(widget.userType==1 || widget.userType==2)
-                  {
+
+              ListTile(
+                title: Text(
+                    'View Profile',
+                    style: TextStyle(
+                        color: Color(0xff009999), fontWeight: FontWeight.bold)
+                ),
+                onTap: () {
+                  if(widget.userType==1 || widget.userType==2){
                     Navigator.popAndPushNamed(context, '/StudProfile');
-                  }
-                  else if (widget.userType==3)
-                  {
+                  } else if (widget.userType==3){
                     Navigator.popAndPushNamed(context, '/SupProfile');
-                  }
-                  else{
+                  }else{
                     print('User type not recognized');
                     Navigator.pop(context);
                   }
-            },
-            child: ListTile(
-              title: Text('My Profile'),
-              leading: Icon(Icons.account_box),
-            ),
-            key: Key('MyProfileInput'),
+
+                },
+              ),
+              ListTile(
+                title: Text(
+                    'Sign Out',
+                    style: TextStyle(
+                        color: Color(0xff009999), fontWeight: FontWeight.bold)
+                ),
+                onTap: () {
+                  Navigator.popAndPushNamed(context,'/Login');
+                },
+              ),
+              ListTile(
+                title: Text('Profile Picture',
+                style: TextStyle(
+                  color: Color(0xff009999), fontWeight: FontWeight.bold)
+                ),
+                onTap: (){
+                  Navigator.popAndPushNamed(context, '/ProfilePicture');
+                },
+              ),
+            ],
+
           ),
 
-          InkWell(
-            onTap: (){},
-            child: ListTile(
-              title: Text('Notifications'),
-              leading: Icon(Icons.assignment, color: Colors.red,),
-            ),
-          ),
+        )
 
-          InkWell(
-            onTap: (){},
-            child: ListTile(
-              title: Text('Settings'),
-              leading: Icon(Icons.settings, color: Colors.blue,),
-            ),
-          ),
-
-          InkWell(
-            onTap: (){
-              Navigator.popAndPushNamed(context,'/Login');
-            },
-            key: Key('SignOutInput'),
-            child: ListTile(
-              title: Text('Sign out'),
-              leading: Icon(Icons.timer_off, color: Colors.green,),
-            ),
-          )
-        ],
-      ),
-    ),
+//    drawer: new Drawer(
+//      child: new ListView(
+//        children: <Widget>[
+//          new UserAccountsDrawerHeader(
+//            accountName: Text('Tshepang Motaung'),
+//            accountEmail: Text( 'tshepangmotaung97@gmail.com'),
+//            currentAccountPicture: GestureDetector(
+//              onTap: ()[
+//                Uploader(context);
+//              ],
+//              child: new CircleAvatar(
+//                backgroundColor: Colors.grey,
+//                child: Icon(Icons.person, color: Colors.white,),
+//
+//              ),
+//            ) ,
+//          ),
+//          InkWell(
+//            onTap: (){
+//                  if(widget.userType==1 || widget.userType==2)
+//                  {
+//                    Navigator.popAndPushNamed(context, '/StudProfile');
+//                  }
+//                  else if (widget.userType==3)
+//                  {
+//                    Navigator.popAndPushNamed(context, '/SupProfile');
+//                  }
+//                  else{
+//                    print('User type not recognized');
+//                    Navigator.pop(context);
+//                  }
+//            },
+//            child: ListTile(
+//              title: Text('My Profile'),
+//              leading: Icon(Icons.account_box),
+//            ),
+//            key: Key('MyProfileInput'),
+//          ),
+//
+//          InkWell(
+//            onTap: (){},
+//            child: ListTile(
+//              title: Text('Notifications'),
+//              leading: Icon(Icons.assignment, color: Colors.red,),
+//            ),
+//          ),
+//
+//          InkWell(
+//            onTap: (){},
+//            child: ListTile(
+//              title: Text('Settings'),
+//              leading: Icon(Icons.settings, color: Colors.blue,),
+//            ),
+//          ),
+//
+//          InkWell(
+//            onTap: (){
+//              Navigator.popAndPushNamed(context,'/Login');
+//            },
+//            key: Key('SignOutInput'),
+//            child: ListTile(
+//              title: Text('Sign out'),
+//              leading: Icon(Icons.timer_off, color: Colors.green,),
+//            ),
+//          )
+//        ],
+//      ),
+//    ),
     );
   }
 }

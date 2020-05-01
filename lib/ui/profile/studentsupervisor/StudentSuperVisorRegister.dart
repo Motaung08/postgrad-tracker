@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:postgrad_tracker/SupervisorRegister.dart';
-import 'StudentRegister.dart';
+//import 'package:postgrad_tracker/logic/register/supervisor/SupervisorRegister.dart';
+import '../../../logic/register/student/StudentRegister.dart';
 
 class StudentSupChoicePage extends StatefulWidget {
   StudentSupChoicePage({Key key, this.title}) : super(key: key);

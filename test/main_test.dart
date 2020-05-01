@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:postgrad_tracker/Board.dart';
-import 'package:postgrad_tracker/Login.dart';
-import 'package:postgrad_tracker/StudentRegister.dart';
-import 'package:postgrad_tracker/StudentSuperVisorRegister.dart';
-import 'package:postgrad_tracker/SupervisorRegister.dart';
+import 'package:postgrad_tracker/ui/board/Board.dart';
+import 'package:postgrad_tracker/ui/login/Login.dart';
+import 'package:postgrad_tracker/logic/register/student/StudentRegister.dart';
+import 'package:postgrad_tracker/ui/profile/studentsupervisor/StudentSuperVisorRegister.dart';
+import 'package:postgrad_tracker/logic/register/supervisor/SupervisorRegister.dart';
 import 'package:postgrad_tracker/main.dart';
 import 'package:flutter_test/flutter_test.dart';
 
