@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
@@ -25,27 +26,47 @@ Future<Post> fetchPost(http.Client client) async {
 
 
 main(){
-  group('Login', () {
-    test('returns a Post if the http call completes successfully', () async {
-      final client = MockClient();
+  group('Server connection', () {
+        test('returns a Post if the Login http call completes successfully', () async {
+          final client = MockClient();
 
-      // Use Mockito to return a successful response when it calls the
-      // provided http.Client.
-      when(client.get('https://witsinnovativeskyline.000webhostapp.com/login.php'))
-          .thenAnswer((_) async => http.Response('{"title": "Test"}', 200));
+          // Use Mockito to return a successful response when it calls the
+          // provided http.Client.
+          when(client.get('https://witsinnovativeskyline.000webhostapp.com/login.php'))
+              .thenAnswer((_) async => http.Response('{"title": "Test"}', 200));
 
-//      expect(await fetchPost(client), const TypeMatcher<Post>());
-    });
+    //      expect(await fetchPost(client), const TypeMatcher<Post>());
+        });
 
-    test('throws an exception if the http call completes with an error', () {
-      final client = MockClient();
+        test('throws an exception if the Login http call completes with an error', () {
+          final client = MockClient();
 
-      // Use Mockito to return an unsuccessful response when it calls the
-      // provided http.Client.
-      when(client.get('https://witsinnovativeskyline.000webhostapp.com/login.php'))
-          .thenAnswer((_) async => http.Response('Not Found', 404));
+          // Use Mockito to return an unsuccessful response when it calls the
+          // provided http.Client.
+          when(client.get('https://witsinnovativeskyline.000webhostapp.com/login.php'))
+              .thenAnswer((_) async => http.Response('Not Found', 404));
 
-      expect(fetchPost(client), throwsException);
-    });
+          expect(fetchPost(client), throwsException);
+        });
+
+        test('returns a Post if the Register http call completes successfully', () async {
+          final client = MockClient();
+
+          when(client.get('https://witsinnovativeskyline.000webhostapp.com/register_user.php'))
+              .thenAnswer((_) async => http.Response('{"title: RegisterChoice"}', 200));
+        });
+
+//        test('returns a Post if the Register http call completes successfully', () async {
+//          final client = MockClient();
+//
+//          when(client.get(
+//              'https://witsinnovativeskyline.000webhostapp.com/register_user.php'))
+//              .thenAnswer((_) async => http.Response('Not Found', 404));
+//
+//          expect(fetchPost(client), throwsException);
+//
+//        });
+
   });
+
 }
