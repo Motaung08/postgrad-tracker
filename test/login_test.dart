@@ -41,9 +41,14 @@
 //
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
+import 'package:postgrad_tracker/ui/login/Login.dart';
+import 'package:postgrad_tracker/ui/profile/studentsupervisor/StudentSuperVisorRegister.dart';
 
 class Post {
   dynamic data;
@@ -65,26 +70,36 @@ Future<Post> fetchPost(http.Client client) async {
   }
 }
 
+Widget makeWidgetTestable(Widget widget){
+  return MaterialApp(
+    home: DefaultAssetBundle(bundle: rootBundle,child: widget),
+  );
+}
 
 main(){
-  group('Server connection', () {
-    test('returns a Post if the Login http call completes successfully', () async {
+  group('Server connection', ()
+  {
+    test(
+        'returns a Post if the Login http call completes successfully', () async {
       final client = MockClient();
 
       // Use Mockito to return a successful response when it calls the
       // provided http.Client.
-      when(client.get('https://witsinnovativeskyline.000webhostapp.com/login.php'))
+      when(client.get(
+          'https://witsinnovativeskyline.000webhostapp.com/login.php'))
           .thenAnswer((_) async => http.Response('{"title": "Test"}', 200));
 
       //      expect(await fetchPost(client), const TypeMatcher<Post>());
     });
 
-    test('throws an exception if the Login http call completes with an error', () {
+    test(
+        'throws an exception if the Login http call completes with an error', () {
       final client = MockClient();
 
       // Use Mockito to return an unsuccessful response when it calls the
       // provided http.Client.
-      when(client.get('https://witsinnovativeskyline.000webhostapp.com/login.php'))
+      when(client.get(
+          'https://witsinnovativeskyline.000webhostapp.com/login.php'))
           .thenAnswer((_) async => http.Response('Not Found', 404));
 
       expect(fetchPost(client), throwsException);
@@ -107,6 +122,17 @@ main(){
 //          expect(fetchPost(client), throwsException);
 //
 //        });
+    testWidgets('All input feild and button widgets should be on screen', (
+        WidgetTester tester) async {
+          await tester.pumpWidget(makeWidgetTestable(LoginPage()));
+
+    });
+
+    testWidgets('All input feild and button widgets should be on screen', (
+        WidgetTester tester) async {
+      await tester.pumpWidget(makeWidgetTestable(StudentSupChoicePage()));
+    });
+
 
   });
 
