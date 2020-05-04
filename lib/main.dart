@@ -35,6 +35,7 @@ Student student=new Student();
 List<Project_Board> boards=List();
 List<DegreeType> degrees=List();
 List<StudentType> studentTypes=List();
+// ignore: non_constant_identifier_names
 Project_Board project_board=new Project_Board();
 
 
@@ -44,6 +45,7 @@ UserController userController=new UserController();
 DegreeController degreeController=new DegreeController();
 StudentTypeController studentTypeController=new StudentTypeController();
 
+// ignore: non_constant_identifier_names
 Project_BoardController project_boardController=new Project_BoardController();
 
 //ProjectBoardView
