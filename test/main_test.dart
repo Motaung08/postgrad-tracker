@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:postgrad_tracker/ui/board/Board.dart';
-import 'package:postgrad_tracker/ui/login/Login.dart';
-import 'package:postgrad_tracker/logic/register/student/StudentRegister.dart';
-import 'package:postgrad_tracker/ui/profile/studentsupervisor/StudentSuperVisorRegister.dart';
-import 'package:postgrad_tracker/logic/register/supervisor/SupervisorRegister.dart';
+import 'package:postgrad_tracker/View/Login.dart';
+import 'package:postgrad_tracker/View/register/StudentRegister.dart';
+import 'package:postgrad_tracker/View/register/StudentSuperVisorRegister.dart';
+import 'package:postgrad_tracker/View/register/SupervisorRegister.dart';
 import 'package:postgrad_tracker/main.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -25,7 +24,7 @@ void main(){
     await tester.pumpWidget(makeWidgetTestable(StudentSupChoicePage()));
     await tester.pumpWidget(makeWidgetTestable(StudentRegisterPage()));
     await tester.pumpWidget(makeWidgetTestable(SupervisorRegisterPage()));
-    await tester.pumpWidget(makeWidgetTestable(Board()));
+//    await tester.pumpWidget(makeWidgetTestable(Board()));
 //    await tester.pumpWidget(makeWidgetTestable(ViewSupProfilePage()));
   });
 }

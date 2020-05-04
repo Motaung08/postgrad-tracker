@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:postgrad_tracker/View/Login.dart';
 import 'package:postgrad_tracker/auth.dart';
-import '../../../ui/login/Login.dart';
 import 'package:http/http.dart' as http;
 
 class StudentRegisterPage extends StatefulWidget {

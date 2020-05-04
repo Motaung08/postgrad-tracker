@@ -1,73 +1,76 @@
-import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:postgrad_tracker/View/register/StudentSuperVisorRegister.dart';
 import 'package:postgrad_tracker/main.dart';
-import '../profile/studentsupervisor/StudentSuperVisorRegister.dart';
-import 'package:http/http.dart' as http;
 import 'dart:async';
 
-
 class LoginPage extends StatefulWidget {
-  LoginPage({Key key, this.title}) : super(key: key);
-  final String title;
 
-//  final Function toggleView;
-//  LoginPage({ this.toggleView });
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  LoginPageState createState() => LoginPageState();
 }
 
-
-class _LoginPageState extends State<LoginPage> {
-
+class LoginPageState extends State<LoginPage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   final _formKey = GlobalKey<FormState>();
-  String msg='';
+  String msg = '';
+
   //text field state
 
-  TextEditingController _emailController =  new TextEditingController();
-  TextEditingController _passwordController =  new TextEditingController();
+  TextEditingController _emailController = new TextEditingController();
+  TextEditingController _passwordController = new TextEditingController();
+  bool _isHidden=true;
+
+  void toggleVisibility(){
+    setState(() {
+      _isHidden=!_isHidden;
+    });
+  }
   //
-
-  Future<List> _login() async{
-
-    final response = await http.post("https://witsinnovativeskyline.000webhostapp.com/login.php",body: {
-      "Email": _emailController.text,
-      "Password": _passwordController.text
-    },);
-   // print('ugh x2');
-    var datauser= json.decode(response.body);
-    //print(datauser.length);
-
-    if(datauser.length==0){
+  Future _tryLogin() async{
+    msg= await userController.login(_emailController.text, _passwordController.text);
+    if(msg==""){
       setState(() {
-        msg="Incorrect email or password!";
 
       });
-    }else{
-      setState(() {
-        Email=datauser[0]['Email'];
-        userType=int.parse(datauser[0]['UserTypeId']);
-      });
-      Navigator.popAndPushNamed(context, '/Home');
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (BuildContext context) => homePage),
+      );
     }
-    //print(response.body);
-    //print("*********************************************************************************");
-
-    return datauser;
 
   }
+
 
   @override
   Widget build(BuildContext context) {
 
+    final forgotPassButton = new Container(
+      alignment: Alignment.bottomLeft,
+      child:
+      FlatButton(
+
+        onPressed: (){
+          Navigator.pushNamed(context, '/ResetPassword');
+        },
+        textColor: Color(0xff009999),
+        child: Text('Forgot Password?'),
+      ),
+
+    );
+
+
     final emailField = new TextFormField(
       controller: _emailController,
       obscureText: false,
-      validator: (val) => val.isEmpty ? 'Username cannot be blank.' : null,
+      validator: (value) {
+        if (value.isEmpty) {
+          return 'Please enter an email address.';
+        }
+        return null;
+      },
       style: style,
-      key: Key('emailInput'),
-//      validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Email",
@@ -77,16 +80,23 @@ class _LoginPageState extends State<LoginPage> {
 
     final passwordField = TextFormField(
       controller: _passwordController,
-      obscureText: true,
-      validator: (val) => val.length < 6 ? 'Enter a password 6+ chars long' : null,
+
+      obscureText: _isHidden,
+      validator: (val) =>
+      val.isEmpty ? 'Password cannot be empty.' : null,
       style: style,
-      key: Key('passwordInput'),
       decoration: InputDecoration(
+          fillColor: Colors.white,
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Password",
+
           border:
-          OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+          OutlineInputBorder(borderRadius: BorderRadius.circular(32.0),) ,
+          suffixIcon: IconButton(icon: _isHidden ? Icon(Icons.visibility_off) : Icon(Icons.visibility) , onPressed: toggleVisibility, focusColor: Color(0xff009999),)
+      ),
+
     );
+
 
     final loginButon = Material(
       elevation: 5.0,
@@ -96,13 +106,17 @@ class _LoginPageState extends State<LoginPage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () async {
-          _login();
+          _formKey.currentState.validate();
+          await _tryLogin();
+          setState(() {
+
+          });
+
         },
         child: Text("Login",
             textAlign: TextAlign.center,
             style: style.copyWith(
                 color: Colors.white, fontWeight: FontWeight.bold)),
-        key: Key('loginButonInput'),
       ),
     );
 
@@ -114,7 +128,10 @@ class _LoginPageState extends State<LoginPage> {
       super.dispose();
     }
 
-    final RegisterButton = Material(
+
+
+    // ignore: non_constant_identifier_names
+    final RegisterButon = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
       color: Color(0xff009999),
@@ -123,15 +140,14 @@ class _LoginPageState extends State<LoginPage> {
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
           Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => StudentSupChoicePage()),
+            context,
+            MaterialPageRoute(builder: (context) => StudentSupChoicePage()),
           );
         },
         child: Text("Register",
             textAlign: TextAlign.center,
             style: style.copyWith(
                 color: Colors.white, fontWeight: FontWeight.bold)),
-        key: Key('RegisterButonInput'),
       ),
     );
 
@@ -169,33 +185,29 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     return Scaffold(
-
       body: Center(
-
           child: Container(
             color: Colors.white,
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-
             child: Padding(
-
               padding: const EdgeInsets.all(36.0),
               child: Form(
-
                 key: _formKey,
-
                 child: SingleChildScrollView(
-
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-
                       Image.asset(
-                          "assets/logo.png",
-                          fit: BoxFit.contain,
-                        ),
+                        "assets/logo.png",
+                        fit: BoxFit.contain,
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+
                       SizedBox(
                         height: 15.0,
                       ),
@@ -204,36 +216,32 @@ class _LoginPageState extends State<LoginPage> {
                         height: 15.0,
                       ),
                       passwordField,
-                      SizedBox(
-                        height: 15.0,
-                      ),
+                      forgotPassButton,
+//                  SizedBox(
+//                    height: 15.0,
+//                  ),
                       loginButon,
                       SizedBox(
                         height: 15.0,
                       ),
                       _divider(),
-                      SizedBox (
+                      SizedBox(
                         height: 15.0,
                       ),
-                      RegisterButton,
-                      SizedBox (
+                      RegisterButon,
+                      SizedBox(
                         height: 15.0,
                       ),
                       Text(
                         msg,
                         style: TextStyle(color: Colors.red, fontSize: 18.0),
                       ),
-
                     ],
                   ),
+                ),
               ),
             ),
-          ),
-          )
-
-      ),
+          )),
     );
   }
-
 }
-

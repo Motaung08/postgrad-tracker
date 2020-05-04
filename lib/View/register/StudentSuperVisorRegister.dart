@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-//import 'package:postgrad_tracker/logic/register/supervisor/SupervisorRegister.dart';
-import '../../../logic/register/student/StudentRegister.dart';
+
+import 'StudentRegister.dart';
 
 class StudentSupChoicePage extends StatefulWidget {
   StudentSupChoicePage({Key key, this.title}) : super(key: key);
@@ -38,7 +38,6 @@ class _StudentSupChoicePageState extends State<StudentSupChoicePage> {
         onPressed: () {
           Navigator.pushNamed(context, '/SupervisorRegister');
         },
-        key: Key('supervisorButonInput'),
         child: Text("Supervisor",
             textAlign: TextAlign.center,
             style: style.copyWith(
@@ -59,7 +58,6 @@ class _StudentSupChoicePageState extends State<StudentSupChoicePage> {
             MaterialPageRoute(builder: (context) => StudentRegisterPage()),
           );
         },
-        key: Key('studentButonInput'),
         child: Text("Student",
             textAlign: TextAlign.center,
             style: style.copyWith(
@@ -105,45 +103,45 @@ class _StudentSupChoicePageState extends State<StudentSupChoicePage> {
     return Scaffold(
       body: Center(
           child: Row(
-        children: <Widget>[
-          Container(
-            color: Colors.white,
-            width: MediaQuery.of(context).size.width,
-            child: Padding(
-              padding: const EdgeInsets.all(36.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                //mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  //BackButton(),
-                  SizedBox(height: 65.0, width: 500.0, child: supervisorButon),
+            children: <Widget>[
+              Container(
+                color: Colors.white,
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                  padding: const EdgeInsets.all(36.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    //mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      //BackButton(),
+                      SizedBox(height: 65.0, width: 500.0, child: supervisorButon),
 
-                  SizedBox(
-                    height: 15.0,
-                    width: 50.0,
-                  ),
-                  SizedBox(height: 45.0, width: 500.0, child: _divider()),
+                      SizedBox(
+                        height: 15.0,
+                        width: 50.0,
+                      ),
+                      SizedBox(height: 45.0, width: 500.0, child: _divider()),
 
-                  SizedBox(
-                    height: 15.0,
-                    width: 50.0,
+                      SizedBox(
+                        height: 15.0,
+                        width: 50.0,
+                      ),
+                      SizedBox(
+                        height: 65.0,
+                        width: 500.0,
+                        child: studentButon,
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                        width: 50.0,
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: 65.0,
-                    width: 500.0,
-                    child: studentButon,
-                  ),
-                  SizedBox(
-                    height: 15.0,
-                    width: 50.0,
-                  ),
-                ],
+                ),
               ),
-            ),
-          ),
-        ],
-      )),
+            ],
+          )),
     );
   }
 }

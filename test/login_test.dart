@@ -47,8 +47,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
-import 'package:postgrad_tracker/ui/login/Login.dart';
-import 'package:postgrad_tracker/ui/profile/studentsupervisor/StudentSuperVisorRegister.dart';
+import 'package:postgrad_tracker/View/Login.dart';
+import 'package:postgrad_tracker/View/register/StudentSuperVisorRegister.dart';
+
 
 class Post {
   dynamic data;
@@ -105,23 +106,7 @@ main(){
       expect(fetchPost(client), throwsException);
     });
 
-//    test('returns a Post if the Register http call completes successfully', () async {
-//      final client = MockClient();
-//
-//      when(client.get('https://witsinnovativeskyline.000webhostapp.com/register_user.php'))
-//          .thenAnswer((_) async => http.Response('{"title: RegisterChoice"}', 200));
-//    });
 
-//        test('returns a Post if the Register http call completes successfully', () async {
-//          final client = MockClient();
-//
-//          when(client.get(
-//              'https://witsinnovativeskyline.000webhostapp.com/register_user.php'))
-//              .thenAnswer((_) async => http.Response('Not Found', 404));
-//
-//          expect(fetchPost(client), throwsException);
-//
-//        });
     testWidgets('All input feild and button widgets should be on screen', (
         WidgetTester tester) async {
           await tester.pumpWidget(makeWidgetTestable(LoginPage()));
