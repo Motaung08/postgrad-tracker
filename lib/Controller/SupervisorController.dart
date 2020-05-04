@@ -39,6 +39,7 @@ class SupervisorController extends StatefulWidget {
   Future<String> registration(Supervisor supervisorA, User userA) async {
     supervisor.register = false;
     String userRegistrationMessage="";
+    // ignore: non_constant_identifier_names
     String RegistrationSuccess="";
     userRegistrationMessage=await userController.userRegistration(userA);
     if (userRegistrationMessage=="Email Already Exists, Please Try Again With New Email Address..!"){
