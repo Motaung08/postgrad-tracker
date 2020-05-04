@@ -4,6 +4,7 @@ import 'package:postgrad_tracker/Model/User.dart';
 import 'package:http/http.dart' as http;
 import 'package:postgrad_tracker/main.dart';
 
+// ignore: must_be_immutable
 class UserController extends StatefulWidget {
 
   Future<String> userRegistration(User userA) async {
