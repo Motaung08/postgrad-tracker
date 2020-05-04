@@ -7,13 +7,12 @@ import 'package:postgrad_tracker/Model/Student.dart';
 import 'package:postgrad_tracker/Model/User.dart';
 import 'package:postgrad_tracker/main.dart';
 
-// ignore: must_be_immutable
 class StudentController extends StatefulWidget {
 
   String msg = '';
-  // ignore: non_constant_identifier_names
   Future<List> GetStudDetails() async {
-    //print('let us deduce details...'+user.email);
+    print('hhhhhhhhhhhhhhhhhhhhhhhhhhhh     ');
+//    print('let us deduce details...'+user.email);
 
     final response = await http.post(
         "https://witsinnovativeskyline.000webhostapp.com/viewStudentProfile.php",
@@ -40,13 +39,25 @@ class StudentController extends StatefulWidget {
       student.registrationDate=DateTime.parse(datauser[0]['Student_RegistrationDate']);
       //print('currently ... date: '+ student.registrationDate.toString());
       student.email=user.email;
-
+      student.studentTypeID=int.parse(datauser[0]['StudentTypeID']);
 
     }
     //print(response.body);
 
     return datauser;
   }
+
+  String DetermineStudentType() {
+    String type=studentTypes[student.studentTypeID-1].Student_Type;
+    return type;
+
+  }
+
+  String DetermineDegreeType(){
+    String type=degrees[student.degreeID-1].Degree_Type;
+    return type;
+  }
+
 
 
   Future<String> studentRegistration(Student studentA, User userA) async {
@@ -104,6 +115,7 @@ class StudentController extends StatefulWidget {
 
   }
 
+
   @override
   _StudentControllerState createState() => _StudentControllerState();
 }
@@ -114,9 +126,7 @@ class _StudentControllerState extends State<StudentController> {
 
   @override
   Widget build(BuildContext context) {
-//    setState(() {
-//
-//    });
+
     return Container();
   }
 }

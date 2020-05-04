@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class Supervisor extends StatefulWidget {
   String email;
   String staffNo;
@@ -21,3 +20,4 @@ class _SupervisorState extends State<Supervisor> {
     return Container();
   }
 }
+

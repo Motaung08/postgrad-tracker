@@ -108,7 +108,6 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
           OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
 
-    // ignore: non_constant_identifier_names
     final ResetButon = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
@@ -133,60 +132,60 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
     );
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Reset Password"),
-          backgroundColor: Color(0xff009999),
-        ),
+      appBar: AppBar(
+        title: Text("Reset Password"),
+        backgroundColor: Color(0xff009999),
+      ),
         body: Center(
-            child: Container(
-                color: Colors.white,
-                width: MediaQuery.of(context).size.width,
+          child: Container(
+            color: Colors.white,
+            width: MediaQuery.of(context).size.width,
 
-                child: Padding(
-                    padding: const EdgeInsets.all(36.0),
-                    child: Form(
-                        key: _formKey,
-                        child: SingleChildScrollView(
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  SizedBox(
-                                    height: 15.0,
-                                  ),
-                                  SizedBox(
-                                    //width: MediaQuery.of(context).size.width / 2.8,
-                                      child: studentEmailField
-                                  ),
-                                  SizedBox(
-                                    height: 15.0,
-                                  ),
-                                  SizedBox(
-                                    //width:
-                                    //MediaQuery.of(context).size.width / 2.8,
-                                      child: passwordField),
-                                  SizedBox(
-                                    height: 15.0,
-                                  ),
-                                  SizedBox(
-                                    //width:
-                                    //MediaQuery.of(context).size.width / 2.8,
-                                      child: confirmPasswordField
-                                  ),
-                                  SizedBox(
-                                    height: 15.0,
-                                  ),
-                                  error,
-                                  SizedBox(
-                                    height: 15.0,
-                                  ),
-                                  ResetButon
-                                ]
-                            )
-                        )
-                    )
-                )
+            child: Padding(
+              padding: const EdgeInsets.all(36.0),
+              child: Form(
+                key: _formKey,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                      height: 15.0,
+                      ),
+                      SizedBox(
+                        //width: MediaQuery.of(context).size.width / 2.8,
+                        child: studentEmailField
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      SizedBox(
+                        //width:
+                        //MediaQuery.of(context).size.width / 2.8,
+                        child: passwordField),
+                      SizedBox(
+                      height: 15.0,
+                      ),
+                      SizedBox(
+                        //width:
+                        //MediaQuery.of(context).size.width / 2.8,
+                        child: confirmPasswordField
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      error,
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      ResetButon
+                    ]
+                  )
+                 )
+              )
             )
+          )
         )
     );
   }

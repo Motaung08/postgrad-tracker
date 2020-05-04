@@ -4,7 +4,6 @@ import 'package:postgrad_tracker/Model/User.dart';
 import 'package:http/http.dart' as http;
 import 'package:postgrad_tracker/main.dart';
 
-// ignore: must_be_immutable
 class UserController extends StatefulWidget {
 
   Future<String> userRegistration(User userA) async {
@@ -33,15 +32,14 @@ class UserController extends StatefulWidget {
     return message;
   }
 
-  // ignore: non_constant_identifier_names
   Future<String> login(String email, String Password) async {
     String msg="";
 
     final response = await http.post(
         "https://witsinnovativeskyline.000webhostapp.com/login.php",
         body: {
-          "Email": email,
-          "Password": Password
+          'Email': email,
+          'Password': Password
         });
 
     var datauser = json.decode(response.body);
@@ -50,14 +48,14 @@ class UserController extends StatefulWidget {
 
     if (datauser.length == 0) {
 
-      msg = "Incorrect email or password!";
-      print(msg);
+        msg = "Incorrect email or password!";
+        print(msg);
 
     } else {
       //print('Setting......................');
 
-      user.email = datauser[0]['Email'];
-      user.userTypeID = int.parse(datauser[0]['UserTypeId']);
+        user.email = datauser[0]['Email'];
+        user.userTypeID = int.parse(datauser[0]['UserTypeId']);
 
       if (user.userTypeID==1){
 
@@ -66,6 +64,10 @@ class UserController extends StatefulWidget {
         await project_boardController.ReadBoards();
 
 
+
+        await studentTypeController.getTypes();
+
+        await degreeController.getDegrees();
 
       }
       else{
@@ -80,11 +82,9 @@ class UserController extends StatefulWidget {
     return msg;
   }
 
-  // ignore: non_constant_identifier_names
   String ResetString="";
-  // ignore: non_constant_identifier_names
   Future<String> ResetPassword(String email, String password) async{
-
+    
     var data =
     {
       'Email': email,
@@ -103,13 +103,13 @@ class UserController extends StatefulWidget {
 
     if (result=="No user found.") {
 
-      ResetString = "No user found :(";
-      print(ResetString);
+        ResetString = "No user found :(";
+        print(ResetString);
 
     } else if (result=="Email Exists but password not reset.") {
 
-      ResetString =
-      "There was a problem updating the password, please try again.";
+        ResetString =
+        "There was a problem updating the password, please try again.";
 
     }else{
       ResetString="Successfully updated password!";
@@ -118,6 +118,7 @@ class UserController extends StatefulWidget {
     return ResetString;
 
   }
+
 
   @override
   _UserControllerState createState() => _UserControllerState();

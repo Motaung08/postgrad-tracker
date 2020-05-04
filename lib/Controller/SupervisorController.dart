@@ -74,6 +74,7 @@ class SupervisorController extends StatefulWidget {
     return RegistrationSuccess;
   }
 
+
   @override
   _SupervisorControllerState createState() => _SupervisorControllerState();
 }

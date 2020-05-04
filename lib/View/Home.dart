@@ -1,14 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:postgrad_tracker/Controller/Project_BoardController.dart';
+import 'package:postgrad_tracker/Controller/StudentController.dart';
+import 'package:postgrad_tracker/Controller/SupervisorController.dart';
+import 'package:postgrad_tracker/Controller/UserController.dart';
 import 'package:postgrad_tracker/Model/Project_Board.dart';
-//import 'package:postgrad_tracker/Model/User.dart';
-//import 'package:postgrad_tracker/View/board/Board.dart';
+import 'package:postgrad_tracker/Model/Student.dart';
+import 'package:postgrad_tracker/Model/Supervisor.dart';
+import 'package:postgrad_tracker/Model/User.dart';
+import 'package:postgrad_tracker/View/Board.dart';
 import 'package:postgrad_tracker/main.dart';
 
 
 class HomePage extends StatefulWidget {
 
-  final  List<DynamicWidget> listDynamic = [];
+ final  List<DynamicWidget> listDynamic = [];
 
   initializeDisplay(){
     print('Initializing board display! ##################');
@@ -26,8 +33,7 @@ class HomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<HomePage> {
   TextEditingController titleController = new TextEditingController();
-//  List<DynamicWidget> listDynamic = [];
-
+  String boardTitle="";
 
   //int userType=user.userTypeID;
   Future<String> createAlertDialog(BuildContext context) {
@@ -43,17 +49,19 @@ class _MyHomePageState extends State<HomePage> {
 
             ),
             actions: <Widget>[
+
               MaterialButton(
                 elevation: 5.0,
                 child: Text("Create Board"),
                 onPressed: () {
-
-                  Navigator.of(context).pop(titleController.text.toString());
-
+                  boardTitle=titleController.text;
+                  //Navigator.of(context).pop(titleController.text.toString());
+                  Navigator.of(context).pop();
                 },
               )
             ],
           );
+
         });
   }
 
@@ -67,14 +75,27 @@ class _MyHomePageState extends State<HomePage> {
 
   signout(){
     boards.clear();
+    degrees.clear();
+    studentTypes.clear();
     widget.listDynamic.clear();
+
+    User user=new User();
+    supervisor=new Supervisor();
+    student=new Student();
+    project_board=new Project_Board();
+    studentController=new StudentController();
+    supervisorController=new SupervisorController();
+    userController=new UserController();
+    project_boardController=new Project_BoardController();
     Navigator.popAndPushNamed(context, '/Login');
 
-    //NOTE!!! more will need to be done here.
+//ProjectBoardView
+    HomePage homePage=new HomePage();
+
   }
 
 
-
+  TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0, color: (Colors.white));
   @override
   Widget build(BuildContext context) {
 
@@ -86,51 +107,70 @@ class _MyHomePageState extends State<HomePage> {
       ),
     );
 
-    return Scaffold(
+    final plusButton = new Container(
+      alignment: Alignment.bottomRight,
+      child: MaterialButton(
+        onPressed: () {
+          createAlertDialog(context).then((onValue){
+            if (boardTitle!=""){
+              project_board.Project_Title=boardTitle;
+              project_boardController.createBoard(boardTitle);
+              addDynamic(project_board);
+              boardTitle="";
+              setState(() {
 
+              });
+            }
+
+          });
+        },
+        color:
+        //Colors.blueGrey
+        Color(0xff009999)
+        ,
+        textColor: Colors.white,
+        child: Icon(
+          Icons.add,
+          size: 40,
+        ),
+        padding: EdgeInsets.all(16),
+        shape: CircleBorder(),
+      ),
+    );
+
+    final arrowImage = Image.asset("assets/downarrow.png");
+
+    final noBoardsView= new Column(
+      children: <Widget>[
+        Container(
+          width: MediaQuery.of(context).size.width/1.1,
+          child: Text("Click the + button below to create a board.",
+            style: TextStyle(fontFamily: 'Montserrat', fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.blueGrey),
+          ),
+        ),
+        arrowImage,
+      ],
+    );
+
+
+
+    return Scaffold(
+      //
         appBar: AppBar(
           title: Text("Innovative Skyline"),
           backgroundColor: Color(0xff009999),
         ),
         body: new Container(
           margin: new EdgeInsets.all(10.0),
+//         // height: MediaQuery.of(context).size.height,
           child: new Column(
+//
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              dynamicTextField,
-              //1 == 0 ? result : dynamicTextField,
-              // data.length == 0 ? submitButton : new Container(),
-
-              FlatButton(
-                onPressed: () {
-
-                  createAlertDialog(context).then((onValue){
-                    //Project_Board created=new Project_Board();
-                    //created.Project_Title
-                    project_board.Project_Title='$onValue';
-                    project_boardController.createBoard('$onValue');
-                    addDynamic(project_board);
-                    setState(() {
-
-                    });
-                  });
-
-                },
-                color: Colors.blue,
-                padding: EdgeInsets.all(30),
-                child: Row(
-                  children: <Widget>[
-                    Icon(Icons.add),
-                    Text(
-                      "  Create new board",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    )
-                  ],
-                ),
-              ),
-            ],
+              boards.isEmpty? noBoardsView : dynamicTextField,
+              plusButton,
+            ]
           ),
         ),
         drawer: Drawer(
@@ -169,8 +209,6 @@ class _MyHomePageState extends State<HomePage> {
                   }
                 },
               ),
-
-
               ListTile(
                 title: Text('Sign Out',
                     style: TextStyle(
@@ -181,13 +219,17 @@ class _MyHomePageState extends State<HomePage> {
               ),
             ],
           ),
-        ));
+        ),
+      //bottomNavigationBar: plusButton,
+      //bottomSheet: plusButton,
+    );
+
   }
 }
 
 
-// ignore: must_be_immutable
 class DynamicWidget extends StatelessWidget {
+  TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0, color: (Colors.white));
   //String giventitle='';
   Project_Board aboard;
 
@@ -195,16 +237,24 @@ class DynamicWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       margin: new EdgeInsets.all(8.0),
       child: new MaterialButton(
+        elevation: 5.0,
+        //borderRadius: BorderRadius.circular(30.0),
+        color: Colors.blueGrey
+        //Color(0xff009999)
+         ,
         onPressed: () {
           project_board=aboard;
           Navigator.pushNamed(context, '/Board');
         },
-        color: Colors.blue,
-        child: Text(aboard.Project_Title),
+        child: Text(aboard.Project_Title, style: style,),
       ),
+
     );
   }
 }
+
+

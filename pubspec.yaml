@@ -44,6 +44,7 @@ flutter:
   assets:
     - logo.png
     - ProfilePic.png
+    - downarrow.png
   fonts:
     - family: Montserrat
       fonts:

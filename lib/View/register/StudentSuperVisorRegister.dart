@@ -103,45 +103,45 @@ class _StudentSupChoicePageState extends State<StudentSupChoicePage> {
     return Scaffold(
       body: Center(
           child: Row(
-            children: <Widget>[
-              Container(
-                color: Colors.white,
-                width: MediaQuery.of(context).size.width,
-                child: Padding(
-                  padding: const EdgeInsets.all(36.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    //mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      //BackButton(),
-                      SizedBox(height: 65.0, width: 500.0, child: supervisorButon),
+        children: <Widget>[
+          Container(
+            color: Colors.white,
+            width: MediaQuery.of(context).size.width,
+            child: Padding(
+              padding: const EdgeInsets.all(36.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                //mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  //BackButton(),
+                  SizedBox(height: 65.0, width: 500.0, child: supervisorButon),
 
-                      SizedBox(
-                        height: 15.0,
-                        width: 50.0,
-                      ),
-                      SizedBox(height: 45.0, width: 500.0, child: _divider()),
-
-                      SizedBox(
-                        height: 15.0,
-                        width: 50.0,
-                      ),
-                      SizedBox(
-                        height: 65.0,
-                        width: 500.0,
-                        child: studentButon,
-                      ),
-                      SizedBox(
-                        height: 15.0,
-                        width: 50.0,
-                      ),
-                    ],
+                  SizedBox(
+                    height: 15.0,
+                    width: 50.0,
                   ),
-                ),
+                  SizedBox(height: 45.0, width: 500.0, child: _divider()),
+
+                  SizedBox(
+                    height: 15.0,
+                    width: 50.0,
+                  ),
+                  SizedBox(
+                    height: 65.0,
+                    width: 500.0,
+                    child: studentButon,
+                  ),
+                  SizedBox(
+                    height: 15.0,
+                    width: 50.0,
+                  ),
+                ],
               ),
-            ],
-          )),
+            ),
+          ),
+        ],
+      )),
     );
   }
 }
