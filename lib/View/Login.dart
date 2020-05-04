@@ -50,6 +50,7 @@ class LoginPageState extends State<LoginPage> {
 
     final forgotPassButton = new Container(
       alignment: Alignment.bottomLeft,
+      key: Key("ForgotPasswordInput"),
       child:
         FlatButton(
 
