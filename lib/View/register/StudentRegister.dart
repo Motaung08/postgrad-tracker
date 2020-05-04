@@ -1,15 +1,12 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:postgrad_tracker/Model/DegreeType.dart';
 
-import 'package:postgrad_tracker/Model/PostGradType.dart';
 import 'package:postgrad_tracker/Model/Student.dart';
 import 'package:postgrad_tracker/Model/StudentType.dart';
 
 import 'package:postgrad_tracker/Model/User.dart';
 import 'package:postgrad_tracker/View/Login.dart';
 import 'package:postgrad_tracker/main.dart';
-import 'package:http/http.dart' as http;
 
 import '../../main.dart';
 
@@ -33,6 +30,7 @@ class StudentRegisterPage extends StatefulWidget {
 class _StudentRegisterPageState extends State<StudentRegisterPage> {
    Future initializeRegister () async {
     await widget.initialize();
+    // ignore: missing_return
     print("Student types: "+studentTypes.length.toString());
 
 
@@ -121,11 +119,14 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
   final _formKey = GlobalKey<FormState>();
   String error = '';
 
+  // ignore: non_constant_identifier_names
   bool SuccessUser = false;
+  // ignore: non_constant_identifier_names
   bool SuccessStudent = false;
   bool passwordMatch = false;
 
   TextEditingController confirmPassCont = new TextEditingController();
+  // ignore: non_constant_identifier_names
   TextEditingController StudentTypeCont = new TextEditingController();
 
   //text field state
@@ -151,10 +152,15 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
+  // ignore: non_constant_identifier_names
   final StudentNoController = TextEditingController();
+  // ignore: non_constant_identifier_names
   final Student_FNameController = TextEditingController();
+  // ignore: non_constant_identifier_names
   final Student_LNameController = TextEditingController();
+  // ignore: non_constant_identifier_names
   final DegreeTypeController = TextEditingController();
+  // ignore: non_constant_identifier_names
   final RegistrationDateController = TextEditingController();
 
   Future studentRegistration() async {
