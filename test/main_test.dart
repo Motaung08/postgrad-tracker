@@ -20,10 +20,10 @@ void main(){
   testWidgets('All pages should be accessed!!!', (
       WidgetTester tester) async {
     await tester.pumpWidget(makeWidgetTestable(MyApp()));
-    await tester.pumpWidget(makeWidgetTestable(LoginPage()));
-    await tester.pumpWidget(makeWidgetTestable(StudentSupChoicePage()));
-    await tester.pumpWidget(makeWidgetTestable(StudentRegisterPage()));
-    await tester.pumpWidget(makeWidgetTestable(SupervisorRegisterPage()));
+//    await tester.pumpWidget(makeWidgetTestable(LoginPage()));
+//    await tester.pumpWidget(makeWidgetTestable(StudentSupChoicePage()));
+//    await tester.pumpWidget(makeWidgetTestable(StudentRegisterPage()));
+//    await tester.pumpWidget(makeWidgetTestable(SupervisorRegisterPage()));
 //    await tester.pumpWidget(makeWidgetTestable(Board()));
 //    await tester.pumpWidget(makeWidgetTestable(ViewSupProfilePage()));
   });
