@@ -49,6 +49,8 @@ import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
 import 'package:postgrad_tracker/View/Login.dart';
 import 'package:postgrad_tracker/View/register/StudentSuperVisorRegister.dart';
+import 'package:postgrad_tracker/View/register/StudentRegister.dart';
+import 'package:postgrad_tracker/View/register/SupervisorRegister.dart';
 
 
 class Post {
@@ -86,8 +88,8 @@ main(){
 
       // Use Mockito to return a successful response when it calls the
       // provided http.Client.
-      when(client.get(
-          'https://witsinnovativeskyline.000webhostapp.com/login.php'))
+
+      when(client.get('https://witsinnovativeskyline.000webhostapp.com/login.php'))
           .thenAnswer((_) async => http.Response('{"title": "Test"}', 200));
 
       //      expect(await fetchPost(client), const TypeMatcher<Post>());
@@ -116,6 +118,16 @@ main(){
     testWidgets('All input feild and button widgets should be on screen', (
         WidgetTester tester) async {
       await tester.pumpWidget(makeWidgetTestable(StudentSupChoicePage()));
+    });
+
+//    testWidgets('All input feild and button widgets should be on screen', (
+//        WidgetTester tester) async {
+//      await tester.pumpWidget(makeWidgetTestable(StudentRegisterPage()));
+//    });
+
+    testWidgets('All input feild and button widgets should be on screen', (
+        WidgetTester tester) async {
+      await tester.pumpWidget(makeWidgetTestable(SupervisorRegisterPage()));
     });
 
 

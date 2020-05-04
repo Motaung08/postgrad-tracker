@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:postgrad_tracker/Model/Project_Board.dart';
 import 'package:flutter/material.dart';
-import 'package:postgrad_tracker/Model/Student.dart';
 import 'package:postgrad_tracker/main.dart';
 import 'package:http/http.dart' as http;
-import 'package:postgrad_tracker/View/Home.dart';
 
+// ignore: camel_case_types
 class Project_BoardController extends StatefulWidget {
 
+  // ignore: non_constant_identifier_names
   Future ReadBoards() async{
       bool created = false;
       String msg = '';
@@ -34,6 +34,7 @@ class Project_BoardController extends StatefulWidget {
         var response = await http.post(url, body: data);
 
         // Getting Server response into variable.
+        // ignore: non_constant_identifier_names
         var Response = jsonDecode(response.body);
         print(Response);
 
@@ -63,11 +64,6 @@ class Project_BoardController extends StatefulWidget {
 
           homePage.initializeDisplay();
         }
-
-
-
-
-
 
   }
 
@@ -112,6 +108,7 @@ class Project_BoardController extends StatefulWidget {
 
 }
 
+// ignore: camel_case_types
 class _Project_BoardControllerState extends State<Project_BoardController> {
 
 

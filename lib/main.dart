@@ -7,8 +7,8 @@ import 'package:postgrad_tracker/Controller/UserController.dart';
 import 'package:postgrad_tracker/Model/DegreeType.dart';
 import 'package:postgrad_tracker/Model/StudentType.dart';
 
-import 'package:postgrad_tracker/View/Register/StudentRegister.dart';
-import 'package:postgrad_tracker/View/Register/SupervisorRegister.dart';
+import 'package:postgrad_tracker/View/register/StudentRegister.dart';
+import 'package:postgrad_tracker/View/register/SupervisorRegister.dart';
 import 'package:postgrad_tracker/View/Board.dart';
 import 'package:postgrad_tracker/Controller/Project_BoardController.dart';
 import 'package:postgrad_tracker/Controller/StudentController.dart';
@@ -19,9 +19,10 @@ import 'package:postgrad_tracker/Model/User.dart';
 import 'package:postgrad_tracker/View/profile/supervisor/ViewSupProfile.dart';
 import 'package:postgrad_tracker/View/resetpassword.dart';
 import 'View/Login.dart';
-import 'View/Register/StudentSuperVisorRegister.dart';
+import 'View/register/StudentSuperVisorRegister.dart';
 import 'View/profile/student/ViewStudentProfile.dart';
 import 'View/Home.dart';
+import 'View/register/StudentSuperVisorRegister.dart';
 
 
 

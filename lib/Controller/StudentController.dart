@@ -7,9 +7,11 @@ import 'package:postgrad_tracker/Model/Student.dart';
 import 'package:postgrad_tracker/Model/User.dart';
 import 'package:postgrad_tracker/main.dart';
 
+// ignore: must_be_immutable
 class StudentController extends StatefulWidget {
 
   String msg = '';
+  // ignore: non_constant_identifier_names
   Future<List> GetStudDetails() async {
     print('hhhhhhhhhhhhhhhhhhhhhhhhhhhh     ');
 //    print('let us deduce details...'+user.email);
@@ -47,12 +49,14 @@ class StudentController extends StatefulWidget {
     return datauser;
   }
 
+  // ignore: non_constant_identifier_names
   String DetermineStudentType() {
     String type=studentTypes[student.studentTypeID-1].Student_Type;
     return type;
 
   }
 
+  // ignore: non_constant_identifier_names
   String DetermineDegreeType(){
     String type=degrees[student.degreeID-1].Degree_Type;
     return type;
