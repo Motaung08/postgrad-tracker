@@ -6,6 +6,13 @@ class User extends StatefulWidget {
   String password;
   int userTypeID;
 
+  String firstname;
+  String lastname;
+  String degreeType;
+  String studentNo;
+  String degree;
+  String dateOfRegistration;
+
   /* Variable to check if the user can register (not has registered as then the
   check for duplicate emails would fail. */
   bool register;
