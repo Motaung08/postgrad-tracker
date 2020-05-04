@@ -1,19 +1,18 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
+import '../../main.dart';
+import '../../main.dart';
+import '../../main.dart';
 import 'StudentRegister.dart';
 
 class StudentSupChoicePage extends StatefulWidget {
   StudentSupChoicePage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+//  Future init() async{
+//    await studentTypeController.getTypes();
+//    await degreeController.getDegrees();
+//  }
 
   final String title;
 
@@ -45,6 +44,8 @@ class _StudentSupChoicePageState extends State<StudentSupChoicePage> {
       ),
     );
 
+
+
     final studentButon = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
@@ -53,6 +54,9 @@ class _StudentSupChoicePageState extends State<StudentSupChoicePage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
+//          setState(() {
+//            widget.init();
+//          });
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => StudentRegisterPage()),

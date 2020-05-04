@@ -9,7 +9,7 @@ import 'package:postgrad_tracker/main.dart';
 class StudentTypeController extends StatefulWidget {
 
   Future getTypes() async{
-
+    //print('I am called');
     final response = await http.post("https://witsinnovativeskyline.000webhostapp.com/getStudentTypes.php");
 
     //print('Assigning title for '+student.studentTypeID.toString());

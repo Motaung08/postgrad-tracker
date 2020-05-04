@@ -11,11 +11,15 @@ import 'package:postgrad_tracker/View/Login.dart';
 import 'package:postgrad_tracker/main.dart';
 import 'package:http/http.dart' as http;
 
+import '../../main.dart';
+
 class StudentRegisterPage extends StatefulWidget {
 
-  initialize(){
-    studentTypeController.getTypes();
-    degreeController.getDegrees();
+   Future initialize() async{
+    print('initializing student types and degrees.');
+    await studentTypeController.getTypes();
+    await degreeController.getDegrees();
+    print('Student type '+studentTypes.length.toString());
   }
 
   @override
@@ -27,8 +31,8 @@ class StudentRegisterPage extends StatefulWidget {
 
 
 class _StudentRegisterPageState extends State<StudentRegisterPage> {
-  Future initializeRegister () {
-
+   Future initializeRegister () async {
+    await widget.initialize();
     print("Student types: "+studentTypes.length.toString());
 
 
@@ -37,10 +41,13 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
     //widget.initialize();
     _dropdownMenuItems = buildDropdownMenuItems(degrees);
     _selectedDegree = degrees[0];
-    // print('Degrees size: '+degrees.length.toString());
+     //print('Degrees size: '+degrees.length.toString());
 
     _dropdownStudTypeMenuItems = buildDropdownStudentTypeMenuItems(_studenttype);
     _selectedStudType = _dropdownStudTypeMenuItems[0].value;
+    setState(() {
+
+    });
 
   }
 
@@ -55,18 +62,19 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
   StudentType _selectedStudType;
 
 
-//  @override
-//  void initState() {
-//    widget.initialize();
-//    _dropdownMenuItems = buildDropdownMenuItems(degrees);
+  @override
+  void initState() {
+//    //widget.initialize();
+    initializeRegister();
+//   // _dropdownMenuItems = buildDropdownMenuItems(degrees);
 //    //_selectedDegree = degrees[0];
 //    // print('Degrees size: '+degrees.length.toString());
 //
-//    _dropdownStudTypeMenuItems = buildDropdownStudentTypeMenuItems(_studenttype);
+//   // _dropdownStudTypeMenuItems = buildDropdownStudentTypeMenuItems(_studenttype);
 //    //_selectedStudType = _dropdownStudTypeMenuItems[0].value;
 //
 //    super.initState();
-//  }
+  }
 
   List<DropdownMenuItem<DegreeType>> buildDropdownMenuItems(List companies)  {
     List<DropdownMenuItem<DegreeType>> items = List();
@@ -249,7 +257,8 @@ class _StudentRegisterPageState extends State<StudentRegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    initializeRegister();
+    //widget.initialize();
+    //initializeRegister();
 
     final studentNumberField = TextFormField(
       controller: StudentNoController,
