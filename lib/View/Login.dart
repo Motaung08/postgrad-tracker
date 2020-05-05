@@ -116,6 +116,7 @@ class LoginPageState extends State<LoginPage> {
             });
           }
         },
+        key: Key('LoginInput'),
         child: Text("Login",
             textAlign: TextAlign.center,
             style: style.copyWith(
@@ -147,6 +148,7 @@ class LoginPageState extends State<LoginPage> {
             MaterialPageRoute(builder: (context) => StudentSupChoicePage()),
           );
         },
+        key: Key('RegisterBttnInput'),
         child: Text("Register",
             textAlign: TextAlign.center,
             style: style.copyWith(

@@ -10,8 +10,6 @@ class Board extends StatefulWidget {
   // ignore: non_constant_identifier_names
   const Board({Key key, this.proj_board}) : super(key: key);
 
-
-
   @override
   _BoardState createState() => _BoardState();
 }

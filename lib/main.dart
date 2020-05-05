@@ -22,7 +22,6 @@ import 'View/Login.dart';
 import 'View/register/StudentSuperVisorRegister.dart';
 import 'View/profile/student/ViewStudentProfile.dart';
 import 'View/Home.dart';
-import 'View/register/StudentSuperVisorRegister.dart';
 
 
 
@@ -67,9 +66,8 @@ class MyApp extends StatelessWidget {
         '/Login': (context) => new LoginPage(),
         '/Home': (context) => new HomePage(),
         //'/Home': (context) => new HomePage(email: student.email, userType: user.userTypeID),
-        '/StudProfile': (BuildContext context) =>
+        '/StudProfile': (BuildContext context) => new ViewStudentProfilePage(),
 //        new ViewStudentProfilePage(user: user,),
-        new ViewStudentProfilePage(),
         '/SupProfile': (BuildContext context) => new ViewSupProfilePage(),
         '/RegisterChoice': (context) => new StudentSupChoicePage(),
         '/StudentRegister': (context) => new StudentRegisterPage(),
