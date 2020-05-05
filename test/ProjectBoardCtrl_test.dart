@@ -4,8 +4,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
 import 'package:postgrad_tracker/Controller/Project_BoardController.dart';
+import 'package:postgrad_tracker/Model/Project_Board.dart';
+import 'package:postgrad_tracker/Model/User.dart';
+import 'package:postgrad_tracker/main.dart';
 
-import 'Module_test.dart';
+import 'Models_test.dart';
 
 class Post {
   dynamic data;
@@ -29,6 +32,9 @@ Future<Post> fetchPost(http.Client client) async {
 
 
 void main() {
+
+  Project_Board data =new Project_Board();
+
   group('Server connection', () {
 
     test(
@@ -66,17 +72,35 @@ void main() {
       await tester.pumpWidget(makeWidgetTestable(Project_BoardController()));
 
     });
+//    test('Must be assigned', (){
+//      expect(data.ProjectID, null);
+//      expect(data.Project_Title, null);
+//      expect(data.Project_Description, null);
+//      expect(user.userTypeID, null);
+//      expect(student.studentNo, '1431795');
+//      expect(supervisor.staffNo, '999999');
+//    });
 
-    testWidgets('find text Widget',
-        (WidgetTester tester) async {
-          await tester.pumpWidget(MaterialApp(
-            home: Scaffold(
-              body: Text('data'),
-            ),
-          ));
-          expect(find.text('data'), findsOneWidget);
-        });
-//      await tester.pumpWidget(makeWidgetTestable(Project_BoardController()));
+    test('Test createboard function',(){
+      user.userTypeID=1;
+      supervisor.staffNo="";
+      student.studentNo="";
+
+      final client = MockClient();
+
+      when(client.get(
+          'https://witsinnovativeskyline.000webhostapp.com/ReadBoards.php'))
+          .thenAnswer((_) async => http.Response('{"title": "Test"}', 200));
+
+      var map = Map<String,dynamic>();
+
+      map['studentNo']='1431795';
+      map['staffNo']='999999';
+      map['userTypedID']='1';
+
+
+    });
+
     });
 
 }

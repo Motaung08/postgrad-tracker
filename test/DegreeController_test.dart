@@ -4,7 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
 import 'package:postgrad_tracker/Controller/DegreeController.dart';
 
-import 'Module_test.dart';
+import 'Models_test.dart';
 
 class Post {
   dynamic data;
