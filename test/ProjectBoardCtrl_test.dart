@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
@@ -65,6 +66,16 @@ void main() {
       await tester.pumpWidget(makeWidgetTestable(Project_BoardController()));
 
     });
+
+    testWidgets('find text Widget',
+        (WidgetTester tester) async {
+          await tester.pumpWidget(MaterialApp(
+            home: Scaffold(
+              body: Text('data'),
+            ),
+          ));
+          expect(find.text('data'), findsOneWidget);
+        });
 //      await tester.pumpWidget(makeWidgetTestable(Project_BoardController()));
     });
 
