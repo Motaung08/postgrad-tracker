@@ -9,7 +9,6 @@ import 'package:postgrad_tracker/Model/Project_Board.dart';
 import 'package:postgrad_tracker/Model/Student.dart';
 import 'package:postgrad_tracker/Model/Supervisor.dart';
 import 'package:postgrad_tracker/Model/User.dart';
-import 'package:postgrad_tracker/View/Board.dart';
 import 'package:postgrad_tracker/main.dart';
 
 
@@ -228,6 +227,7 @@ class _MyHomePageState extends State<HomePage> {
 }
 
 
+// ignore: must_be_immutable
 class DynamicWidget extends StatelessWidget {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0, color: (Colors.white));
   //String giventitle='';

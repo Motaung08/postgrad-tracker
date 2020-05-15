@@ -22,7 +22,6 @@ import 'View/Login.dart';
 import 'View/register/StudentSuperVisorRegister.dart';
 import 'View/profile/student/ViewStudentProfile.dart';
 import 'View/Home.dart';
-import 'View/register/StudentSuperVisorRegister.dart';
 
 
 
@@ -35,6 +34,7 @@ Student student=new Student();
 List<Project_Board> boards=List();
 List<DegreeType> degrees=List();
 List<StudentType> studentTypes=List();
+// ignore: non_constant_identifier_names
 Project_Board project_board=new Project_Board();
 
 
@@ -44,6 +44,7 @@ UserController userController=new UserController();
 DegreeController degreeController=new DegreeController();
 StudentTypeController studentTypeController=new StudentTypeController();
 
+// ignore: non_constant_identifier_names
 Project_BoardController project_boardController=new Project_BoardController();
 
 //ProjectBoardView
@@ -65,9 +66,8 @@ class MyApp extends StatelessWidget {
         '/Login': (context) => new LoginPage(),
         '/Home': (context) => new HomePage(),
         //'/Home': (context) => new HomePage(email: student.email, userType: user.userTypeID),
-        '/StudProfile': (BuildContext context) =>
+        '/StudProfile': (BuildContext context) => new ViewStudentProfilePage(),
 //        new ViewStudentProfilePage(user: user,),
-        new ViewStudentProfilePage(),
         '/SupProfile': (BuildContext context) => new ViewSupProfilePage(),
         '/RegisterChoice': (context) => new StudentSupChoicePage(),
         '/StudentRegister': (context) => new StudentRegisterPage(),

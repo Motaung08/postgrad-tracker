@@ -8,6 +8,7 @@ import 'package:postgrad_tracker/main.dart';
 
 class SupervisorController extends StatefulWidget {
 
+  // ignore: non_constant_identifier_names
   Future<List> GetSupDetails() async {
     var msg="";
     final response = await http.post(

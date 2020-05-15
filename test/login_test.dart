@@ -49,7 +49,6 @@ import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
 import 'package:postgrad_tracker/View/Login.dart';
 import 'package:postgrad_tracker/View/register/StudentSuperVisorRegister.dart';
-import 'package:postgrad_tracker/View/register/StudentRegister.dart';
 import 'package:postgrad_tracker/View/register/SupervisorRegister.dart';
 
 
@@ -129,6 +128,7 @@ main(){
         WidgetTester tester) async {
       await tester.pumpWidget(makeWidgetTestable(SupervisorRegisterPage()));
     });
+
 
 
   });

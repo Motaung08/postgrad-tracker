@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Student extends StatefulWidget {
   String email;
   String studentNo;

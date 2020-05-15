@@ -57,6 +57,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
         setState(() => email = val);
       },
       style: style,
+      key: Key('StudentEmailInput'),
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Email",
@@ -74,6 +75,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
         setState(() => password = val);
       },
       style: style,
+      key: Key('PasswordInput'),
       decoration: InputDecoration(
           suffixIcon: IconButton(icon: _isHidden ? Icon(Icons.visibility_off) : Icon(Icons.visibility), onPressed: toggleVisibility),
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -100,6 +102,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
         setState(() => ConfirmPass = val);
       },
       style: style,
+      key: Key('confirmPasswordInput'),
       decoration: InputDecoration(
           suffixIcon: IconButton(icon: _isHiddenConf ? Icon(Icons.visibility_off) : Icon(Icons.visibility), onPressed: toggleVisibilityConf),
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -108,6 +111,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
           OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
 
+    // ignore: non_constant_identifier_names
     final ResetButon = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
@@ -119,6 +123,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
           _tryReset();
 
         },
+        key: Key('ResetButtonInput'),
         child: Text("Reset",
             textAlign: TextAlign.center,
             style: style.copyWith(

@@ -2,8 +2,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
-import 'package:postgrad_tracker/Controller/StudentTypeController.dart';
-
+import 'package:postgrad_tracker/Controller/UserController.dart';
 
 import 'Models_test.dart';
 
@@ -16,7 +15,7 @@ class MockClient extends Mock implements http.Client {}
 
 Future<Post> fetchPost(http.Client client) async {
   final response =
-  await client.get('https://witsinnovativeskyline.000webhostapp.com/getStudentTypes.php');
+  await client.get('https://witsinnovativeskyline.000webhostapp.com/register_user.php');
 
   if (response.statusCode == 200) {
     // If the call to the server was successful, parse the JSON.
@@ -30,31 +29,32 @@ Future<Post> fetchPost(http.Client client) async {
 
 void main() {
   group('Server connection', () {
+
     test(
-        'returns a Post if the StudentTypeController http call completes successfully', () async {
+        'returns a Post if the UserController http call completes successfully', () async {
       final client = MockClient();
 
       when(client.get(
-          'https://witsinnovativeskyline.000webhostapp.com/getStudentTypes.php'))
+          'https://witsinnovativeskyline.000webhostapp.com/register_user.php'))
           .thenAnswer((_) async => http.Response('{"title": "Test"}', 200));
     });
 
     test(
-        'returns a Post if the StudentTypeController http call completes successfully', () async {
+        'returns a Post if the UserController http call completes successfully', () async {
       final client = MockClient();
 
       when(client.get(
-          'https://witsinnovativeskyline.000webhostapp.com/getStudentTypes.php'))
+          'https://witsinnovativeskyline.000webhostapp.com/register_user.php'))
           .thenAnswer((_) async =>
-          http.Response('{"title: StudentTypeController"}', 200));
+          http.Response('{"title: UserController"}', 200));
     });
 
     test(
-        'returns a Post if the StudentTypeController http call completes successfully', () async {
+        'returns a Post if the UserController http call completes successfully', () async {
       final client = MockClient();
 
       when(client.get(
-          'https://witsinnovativeskyline.000webhostapp.com/getStudentTypes.php'))
+          'https://witsinnovativeskyline.000webhostapp.com/register_user.php'))
           .thenAnswer((_) async => http.Response('Not Found', 404));
 
       expect(fetchPost(client), throwsException);
@@ -62,9 +62,9 @@ void main() {
 
     testWidgets('All input feild and button widgets should be on screen', (
         WidgetTester tester) async {
-      await tester.pumpWidget(makeWidgetTestable(StudentTypeController()));
-    });
+      await tester.pumpWidget(makeWidgetTestable(UserController()));
 
+    });
 
   });
 

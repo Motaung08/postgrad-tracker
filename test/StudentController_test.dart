@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:postgrad_tracker/Controller/StudentController.dart';
 import 'package:postgrad_tracker/View/register/StudentRegister.dart';
 
-import 'Module_test.dart';
+import 'Models_test.dart';
 
 class Post {
   dynamic data;

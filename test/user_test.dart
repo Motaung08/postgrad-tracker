@@ -19,6 +19,9 @@ void main(){
       user.email="tshepangmotaung97@gmail.com";
       expect(user.email, "tshepangmotaung97@gmail.com");
 
+      user.studenNo='1431795';
+      expect(user.studenNo, '1431795');
+
       
 
       //TODO carry on in a simlar way skaps and refactor code
