@@ -17,7 +17,7 @@ class StudentController extends StatefulWidget {
 //    print('let us deduce details...'+user.email);
 
     final response = await http.post(
-        "https://witsinnovativeskyline.000webhostapp.com/viewStudentProfile.php",
+        "http://146.141.21.17/viewStudentProfile.php",
         body: {
           "Email": user.email,
         });
@@ -75,7 +75,7 @@ class StudentController extends StatefulWidget {
     }else{
       // SERVER API URL
       var url =
-          'https://witsinnovativeskyline.000webhostapp.com/register_student.php';
+          'http://146.141.21.17/register_student.php';
 
       // Store all data with Param Name.
       var data = {

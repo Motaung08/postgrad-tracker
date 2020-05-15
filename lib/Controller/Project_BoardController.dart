@@ -22,7 +22,7 @@ class Project_BoardController extends StatefulWidget {
 
         // SERVER API URL
         var url =
-            'https://witsinnovativeskyline.000webhostapp.com/ReadBoards.php';
+            'http://146.141.21.17/ReadBoards.php';
 
         var data={
           'UserTypeID' : user.userTypeID.toString(),
@@ -80,7 +80,7 @@ class Project_BoardController extends StatefulWidget {
 
       // SERVER API URL
       var url =
-          'https://witsinnovativeskyline.000webhostapp.com/createBoard.php';
+          'http://146.141.21.17/createBoard.php';
 
       // Store all data with Param Name.
       var data = {

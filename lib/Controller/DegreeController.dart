@@ -9,7 +9,7 @@ class DegreeController extends StatefulWidget {
 
   Future getDegrees() async{
 
-    final response = await http.post("https://witsinnovativeskyline.000webhostapp.com/getDegreeTypes.php");
+    final response = await http.post("http://146.141.21.17/getDegreeTypes.php");
 
     //print('Assigning title for '+student.studentTypeID.toString());
 
@@ -20,6 +20,7 @@ class DegreeController extends StatefulWidget {
       degree.DegreeID=int.parse(result[i]['DegreeID']);
       degree.Degree_Type=result[i]['Degree_Type'];
       degrees.add(degree);
+      //print(degree.Degree_Type);
     }
 
 

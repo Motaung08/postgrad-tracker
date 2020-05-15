@@ -11,7 +11,7 @@ class SupervisorController extends StatefulWidget {
   Future<List> GetSupDetails() async {
     var msg="";
     final response = await http.post(
-        "https://witsinnovativeskyline.000webhostapp.com/viewSupProfile.php",
+        "http://146.141.21.17/viewSupProfile.php",
         body: {
           "Email": user.email,
         });
@@ -48,7 +48,7 @@ class SupervisorController extends StatefulWidget {
     else{
       // SERVER API URL
       var url =
-          'https://witsinnovativeskyline.000webhostapp.com/Register_Supervisor.php';
+          'http://146.141.21.17/Register_Supervisor.php';
 
       // Store all data with Param Name.
       var data = {
