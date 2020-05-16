@@ -109,8 +109,11 @@ class LoginPageState extends State<LoginPage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () async {
+
           if(_formKey.currentState.validate()){
+
             await _tryLogin();
+
             setState(() {
 
             });

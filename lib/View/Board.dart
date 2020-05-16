@@ -19,6 +19,7 @@ class _BoardState extends State<Board> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        
         title: Text(project_board.Project_Title),
         backgroundColor: Color(0xff009999),
       ),

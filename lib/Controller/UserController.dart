@@ -12,7 +12,8 @@ class UserController extends StatefulWidget {
 
     // SERVER API URL
     var url =
-        'http://146.141.21.17/register_user.php';
+        //'http://146.141.21.17/register_user.php';
+        'https://witsinnovativeskyline.000webhostapp.com/register_user.php';
 
     // Store all data with Param Name.
     var data = {'email': userA.email, 'password': userA.password, 'userType': userA.userTypeID};
@@ -34,14 +35,17 @@ class UserController extends StatefulWidget {
   }
 
   Future<String> login(String email, String Password) async {
+
     String msg="";
 
     final response = await http.post(
-        "http://146.141.21.17/login.php",
+        //"http://146.141.21.17/login.php",
+        "https://witsinnovativeskyline.000webhostapp.com/login.php",
         body: {
           'Email': email,
           'Password': Password
         });
+    //print('******************************************** Clicked');
 
     var datauser = json.decode(response.body);
 
@@ -94,7 +98,8 @@ class UserController extends StatefulWidget {
     /*The script below should take in the email and check if there exists a user
     * associated with the given email address. */
     final response = await http.post(
-        "http://146.141.21.17/ResetPassword.php",
+        //"http://146.141.21.17/ResetPassword.php",
+        "https://witsinnovativeskyline.000webhostapp.com/ResetPassword.php",
         body: json.encode(data) );
 
     var result = json.decode(response.body);

@@ -10,7 +10,8 @@ class StudentTypeController extends StatefulWidget {
 
   Future getTypes() async{
     //print('I am called');
-    final response = await http.post("http://146.141.21.17/getStudentTypes.php");
+//    final response = await http.post("http://146.141.21.17/getStudentTypes.php");
+    final response = await http.post("https://witsinnovativeskyline.000webhostapp.com/getStudentTypes.php");
 
     //print('Assigning title for '+student.studentTypeID.toString());
 
