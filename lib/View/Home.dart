@@ -9,6 +9,7 @@ import 'package:postgrad_tracker/Model/Project_Board.dart';
 import 'package:postgrad_tracker/Model/Student.dart';
 import 'package:postgrad_tracker/Model/Supervisor.dart';
 import 'package:postgrad_tracker/Model/User.dart';
+import 'package:postgrad_tracker/View/Board.dart';
 import 'package:postgrad_tracker/main.dart';
 
 
@@ -63,6 +64,8 @@ class _MyHomePageState extends State<HomePage> {
 
         });
   }
+
+
 
   Icon floatingIcon = new Icon(Icons.add);
 
@@ -246,9 +249,14 @@ class DynamicWidget extends StatelessWidget {
         color: Colors.blueGrey
         //Color(0xff009999)
          ,
-        onPressed: () {
+        onPressed: () async {
           project_board=aboard;
-          Navigator.pushNamed(context, '/Board');
+          Board boardPage=new Board();
+          await boardPage.populateListDisplay(aboard.ProjectID);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (BuildContext context) => boardPage),
+          );
         },
         child: Text(aboard.Project_Title, style: style,),
       ),
