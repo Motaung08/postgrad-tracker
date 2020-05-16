@@ -71,7 +71,6 @@ class Project_BoardController extends StatefulWidget {
   Future createBoard(String title) async{
     bool created = false;
 
-
     if(user.userTypeID==1){
       supervisor.staffNo="";
     }
@@ -102,6 +101,27 @@ class Project_BoardController extends StatefulWidget {
 
 
 
+  }
+
+  Future updateBoard() async{
+    var url =
+
+        'https://witsinnovativeskyline.000webhostapp.com/updateBoard.php';
+
+
+    // Store all data with Param Name.
+    var data = {
+      'BoardID': project_board.ProjectID,
+      'Title' : project_board.Project_Title,
+    };
+
+    // Starting Web API Call.
+    var response = await http.post(url, body: json.encode(data));
+
+    // Getting Server response into variable.
+    var message = jsonDecode(response.body);
+
+    print(message);
   }
 
 
