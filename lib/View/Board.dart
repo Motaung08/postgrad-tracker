@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:postgrad_tracker/Model/ListCard.dart';
 import 'package:postgrad_tracker/Model/Project_Board.dart';
@@ -81,12 +82,12 @@ class _BoardState extends State<Board> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () async {
-          if (_formKey.currentState.validate()) {
+          //if (_formKey.currentState.validate()) {
             listController.createList(listTitle.text);
             lists = [];
             widget.populateListDisplay(project_board.ProjectID);
             setState(() {});
-          }
+          //}
         },
         key: Key('ListInput'),
         child: Text("Add list",
@@ -125,13 +126,17 @@ class _BoardState extends State<Board> {
 
     final addListCard = GridTile(
       child: Container(
+
         margin: new EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: Colors.white, width: 1),
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Column(children: <Widget>[
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
           TextFormField(
             controller: listTitle,
             decoration: InputDecoration(
@@ -215,44 +220,6 @@ class _BoardState extends State<Board> {
         ),
       )
 
-      /*
-      new GridView(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: (orientation == Orientation.portrait) ? 2 : 3),
-        children: <Widget>[
-          //GridView.builder(gridDelegate: , itemBuilder: null),
-         GridTile(child: widget.listDynamic[0] ,),
-          GridTile(child: Container(
-            margin: new EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                  color: Colors.white,
-                  width:1
-              ),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-                children: <Widget>[
-                  TextFormField(
-                    controller: listTitle,
-                    decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        hintText: "Enter list title..."
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  addListButon,
-                ]
-            ),
-          ),
-          )
-
-        ],
-      ),
-       */
     );
   }
 }
@@ -270,7 +237,9 @@ class DynamicWidget extends StatelessWidget {
     final addTaskButon = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
-      color: Color(0xff009999),
+      color: Color(0xff009999).withOpacity(0.65),
+      
+      //Color(0xff009999),
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -283,48 +252,77 @@ class DynamicWidget extends StatelessWidget {
 //            });
         },
         key: Key('ListInput'),
-        child: Text("Add Task",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: 'Montserrat',
-                fontSize: 14.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold)),
+        child: Row(
+          children: <Widget>[
+            Icon(Icons.add, color: Colors.white,),
+            Text("Add Task",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 14.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold)),
+          ],
+        )
       ),
     );
 
-    return new Container(
-      width: MediaQuery.of(context).size.width / 2,
-      margin: new EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
+    return new ListView(
+      children: <Widget>[
+
+      Container(
+        width: MediaQuery.of(context).size.width / 2,
+        margin: new EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: Colors.white, width: 8),
         borderRadius: BorderRadius.circular(12),
+        ),
+
+
+
+
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+
+              //crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  width: MediaQuery.of(context).size.width / 4,
+                  child: Text(aList.List_Title,
+                      style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 14.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold)),
+                ),
+
+                IconButton(
+                  icon: Icon(Icons.more_vert),
+                  onPressed: () {
+                    //createAlertDialog(context);
+                  },
+                ),
+
+              ],
+            ),
+
+
+            addTaskButon,
+            SizedBox(
+              height: 20,
+            ),
+          ]
       ),
-      //child: Form(
-      //key: _formKey,
-      child: Column(children: <Widget>[
-        Text(aList.List_Title,
-            style: TextStyle(
-                fontFamily: 'Montserrat',
-                fontSize: 14.0,
-                color: Colors.black,
-                fontWeight: FontWeight.bold)),
 
-        //tasks.isEmpty? AddTask : dynamicTasks;
 
-        SizedBox(
-          height: 20,
-        ),
-        addTaskButon,
-        SizedBox(
-          height: 20,
-        ),
-      ]),
+)
 
-      //), // form
+      ],
     );
-
-    //);
   }
 }

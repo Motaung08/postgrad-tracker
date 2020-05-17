@@ -63,7 +63,7 @@ class Project_BoardController extends StatefulWidget {
           is the home page.
         */
 
-          homePage.initializeDisplay();
+
         }
 
   }
