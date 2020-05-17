@@ -43,7 +43,9 @@ class StudentController extends StatefulWidget {
       //print('currently ... date: '+ student.registrationDate.toString());
       student.email=user.email;
       student.studentTypeID=int.parse(datauser[0]['StudentTypeID']);
-
+      //print("UserTypeID: "+user.userTypeID.toString()+" ,Student Number: "+student.studentNo);
+      user.boards.clear();
+      user.boards=await project_boardController.ReadBoards(user.userTypeID,student.studentNo);
     }
     //print(response.body);
 

@@ -10,7 +10,8 @@ import 'package:http/http.dart' as http;
 class ListController extends StatefulWidget {
 
   // ignore: non_constant_identifier_names
-  Future ReadLists(int ProjectID) async{
+  Future<List> ReadLists(int ProjectID) async{
+    List<ListCard> lists=List();
       bool created = false;
       String msg = '';
 
@@ -38,12 +39,13 @@ class ListController extends StatefulWidget {
           print(msg);
         }
         else {
-         // print('mmmmmmmmmmmmmmmmmmmmmm lists!');
+          print('mmmmmmmmmmmmmmmmmmmmmm lists!');
           lists=[];
           for (int i = 0; i < Response.length; i++) {
             ListCard listReceived = new ListCard();
             listReceived.ListID = int.parse(Response[i]['ListID']);
             listReceived.List_Title = Response[i]['List_Title'];
+            listReceived.listTasks=await taskController.ReadTasks(listReceived.ListID);
 
             lists.add(listReceived);
             //print("Added: "+listReceived.List_Title);
@@ -53,7 +55,7 @@ class ListController extends StatefulWidget {
           /*At this point all the previously created lists have been read in from
           the model and so the UI should then be populated.
           */
-
+          return lists;
           //boardPage.populateListDisplay();
         }
 

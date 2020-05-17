@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:postgrad_tracker/Model/Project_Board.dart';
 
 // ignore: must_be_immutable
 class User extends StatefulWidget {
@@ -18,7 +19,7 @@ class User extends StatefulWidget {
   check for duplicate emails would fail. */
   bool register;
 
-
+  List<Project_Board> boards=List();
 
  // User(this.userID, this._email, this.password, this.userTypeID);
 

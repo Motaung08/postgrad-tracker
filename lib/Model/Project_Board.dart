@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:postgrad_tracker/Model/ListCard.dart';
 
 // ignore: must_be_immutable, camel_case_types
 class Project_Board extends StatefulWidget {
@@ -12,6 +13,8 @@ class Project_Board extends StatefulWidget {
   DateTime Project_StartDate;
   // ignore: non_constant_identifier_names
   DateTime Project_EndDate;
+
+  List<ListCard> boardLists=new List<ListCard>();
 
   _Project_BoardState createState() => _Project_BoardState();
 }

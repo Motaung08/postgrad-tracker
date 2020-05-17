@@ -8,7 +8,8 @@ import 'package:http/http.dart' as http;
 class Project_BoardController extends StatefulWidget {
 
   // ignore: non_constant_identifier_names
-  Future ReadBoards() async{
+  Future<List> ReadBoards(int UserTypeID, String personNo) async{
+    List<Project_Board> boards=List();
       bool created = false;
       String msg = '';
 
@@ -47,6 +48,7 @@ class Project_BoardController extends StatefulWidget {
         }
         else {
           for (int i = 0; i < Response.length; i++) {
+
             Project_Board boardReceived = new Project_Board();
             boardReceived.ProjectID = int.parse(Response[i]['ProjectID']);
             boardReceived.Project_Title = Response[i]['Project_Title'];
@@ -54,18 +56,15 @@ class Project_BoardController extends StatefulWidget {
             //boardReceived.Project_StartDate=DateTime.parse(Response[i]['Project_StartDate']);
             //boardReceived.Project_EndDate=DateTime.parse(Response[i]['Project_EndDate']);
 
+            //boardReceived.boardLists=await listController.ReadLists(boardReceived.ProjectID);
+
             boards.add(boardReceived);
           }
 
 
-          /*At this point all the previously created boards have been read in from
-          the model and so the UI should then be populated. The UI for viewing
-          is the home page.
-        */
-
 
         }
-
+    return boards;
   }
 
   Future createBoard(String title) async{

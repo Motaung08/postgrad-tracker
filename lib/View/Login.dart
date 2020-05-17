@@ -100,12 +100,13 @@ class LoginPageState extends State<LoginPage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () async {
-
+          bool proceed=false;
           if(_formKey.currentState.validate()){
-            boards.clear();
-            msg= await userController.login(_emailController.text, _passwordController.text);
 
-            if(msg==""){
+            user.boards.clear();
+            proceed= await userController.login(_emailController.text, _passwordController.text);
+
+            if(proceed==true){
               setState(() {
 
               });
@@ -116,6 +117,9 @@ class LoginPageState extends State<LoginPage> {
                 context,
                 MaterialPageRoute(builder: (BuildContext context) => homePage),
               );
+            }
+            else{
+              print('Login Denied!');
             }
 
             setState(() {

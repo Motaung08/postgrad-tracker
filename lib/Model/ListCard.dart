@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:postgrad_tracker/Model/Task.dart';
 
 class ListCard extends StatefulWidget {
   int ListID;
@@ -7,7 +8,7 @@ class ListCard extends StatefulWidget {
 
 
 
-
+  List<Task> listTasks=new List<Task>();
   _ListCardState createState() => _ListCardState();
 }
 

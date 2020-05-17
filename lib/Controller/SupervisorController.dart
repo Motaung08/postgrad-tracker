@@ -30,6 +30,7 @@ class SupervisorController extends StatefulWidget {
       supervisor.lName = datauser[0]['Supervisor_Lastname'];
       supervisor.email=user.email;
       supervisor.office=datauser[0]['Supervisor_OfficePhone'];
+      user.boards=await project_boardController.ReadBoards(user.userTypeID,supervisor.staffNo);
       print("Assigning...");
       print(datauser);
     }

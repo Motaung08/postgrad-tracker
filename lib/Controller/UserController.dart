@@ -34,9 +34,9 @@ class UserController extends StatefulWidget {
     return message;
   }
 
-  Future<String> login(String email, String Password) async {
+  Future<bool> login(String email, String Password) async {
 
-    String msg="";
+    bool proceed=false;
 
     final response = await http.post(
         //"http://146.141.21.17/login.php",
@@ -53,7 +53,8 @@ class UserController extends StatefulWidget {
 
     if (datauser.length == 0) {
 
-        msg = "Incorrect email or password!";
+      proceed=false;
+        String msg = "Incorrect email or password!";
         print(msg);
 
     } else {
@@ -62,11 +63,11 @@ class UserController extends StatefulWidget {
         user.email = datauser[0]['Email'];
         user.userTypeID = int.parse(datauser[0]['UserTypeId']);
 
+
       if (user.userTypeID==1){
 
         await studentController.GetStudDetails();
 
-        await project_boardController.ReadBoards();
 
 
         await studentTypeController.getTypes();
@@ -77,13 +78,12 @@ class UserController extends StatefulWidget {
       else{
         await supervisorController.GetSupDetails();
 
-        await project_boardController.ReadBoards();
-
       }
+      proceed=true;
       //Navigator.popAndPushNamed(context, '/Home');
     }
 
-    return msg;
+    return proceed;
   }
 
   String ResetString="";

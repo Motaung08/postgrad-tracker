@@ -19,8 +19,8 @@ class HomePage extends StatefulWidget {
 
   initializeDisplay(){
     print('Initializing board display! ##################');
-    for(int i=0;i<boards.length;i++){
-      listDynamic.add(new DynamicWidget(aboard: boards[i]));
+    for(int i=0;i<user.boards.length;i++){
+      listDynamic.add(new DynamicWidget(aboard: user.boards[i]));
     }
 
   }
@@ -76,7 +76,7 @@ class _MyHomePageState extends State<HomePage> {
 
 
   signout(){
-    boards.clear();
+
     degrees.clear();
     studentTypes.clear();
     widget.listDynamic.clear();
@@ -170,7 +170,7 @@ class _MyHomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              boards.isEmpty? noBoardsView : dynamicTextField,
+              user.boards.isEmpty? noBoardsView : dynamicTextField,
               plusButton,
             ]
           ),
@@ -238,6 +238,10 @@ class DynamicWidget extends StatelessWidget {
 
   DynamicWidget({Key key, @required this.aboard}) : super(key: key);
 
+  popLists() async{
+    aboard.boardLists=await listController.ReadLists(aboard.ProjectID);
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -251,6 +255,7 @@ class DynamicWidget extends StatelessWidget {
          ,
         onPressed: () async {
           project_board=aboard;
+          await popLists();
           Board boardPage=new Board();
           await boardPage.populateListDisplay(aboard.ProjectID);
           Navigator.push(
